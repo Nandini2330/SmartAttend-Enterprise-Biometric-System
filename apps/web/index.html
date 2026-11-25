@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" class="no-transitions">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563EB'><path d='M12 2L1 7l11 5 9-4.09V17h2V7L12 2z'/><path d='M3.27 8.92L12 12.88l8.73-3.96L12 4.96 3.27 8.92z'/><path d='M4.5 10.74V16c0 2.21 3.36 4 7.5 4s7.5-1.79 7.5-4v-5.26l-7.5 3.41-7.5-3.41z'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SmartAttend — Real-world Student Attendance Management Platform with Biometrics, WhatsApp Cloud API, and Automated Reconciliation" />
+    <title>SmartAttend — Every Student. Every Attendance. Every Time.</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('smartattend_theme');
+          if (saved === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.style.colorScheme = 'light';
+          }
+          window.addEventListener('DOMContentLoaded', function() {
+            requestAnimationFrame(function() {
+              document.documentElement.classList.remove('no-transitions');
+            });
+          });
+        } catch(e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-900 dark:text-[#F8FAFC] antialiased font-sans min-h-screen selection:bg-brand-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

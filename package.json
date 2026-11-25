@@ -1,0 +1,37 @@
+{
+  "name": "smartattend-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SmartAttend — Real Student Attendance Platform with Biometrics, WhatsApp & Android Parent App",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "services/device-bridge"
+  ],
+  "scripts": {
+    "dev": "npm --workspace=@smartattend/web run dev",
+    "start": "npm --workspace=@smartattend/web run dev",
+    "dev:all": "node scripts/run-all.mjs",
+    "start:all": "node scripts/run-all.mjs",
+    "dev:web": "npm --workspace=@smartattend/web run dev",
+    "build": "npm --workspace=@smartattend/web run build",
+    "build:web": "npm --workspace=@smartattend/web run build",
+    "dev:mobile": "npm --workspace=@smartattend/mobile start",
+    "dev:bridge": "npm --workspace=@smartattend/device-bridge run dev",
+    "test": "npm --workspace=@smartattend/shared-types run build"
+  },
+  "keywords": [
+    "attendance",
+    "biometrics",
+    "facial-recognition",
+    "fingerprint",
+    "whatsapp-cloud-api",
+    "school-management",
+    "react",
+    "react-native",
+    "expo",
+    "supabase"
+  ],
+  "author": "SmartAttend Engineering Team",
+  "license": "UNLICENSED"
+}
