@@ -33,5 +33,14 @@
     "supabase"
   ],
   "author": "SmartAttend Engineering Team",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.66.0",
+    "@rollup/rollup-linux-x64-musl": "^4.66.0",
+    "@rollup/rollup-win32-x64-msvc": "^4.66.0"
+  },
+  "devDependencies": {
+    "@alloc/quick-lru": "^5.3.0",
+    "esbuild": "^0.28.2"
+  }
 }

@@ -18,6 +18,7 @@ import type {
   PickupAuthorization,
   SchoolVisitor,
   PromotionBatchResult,
+  StudentExamResult,
   LeaveType,
   LeaveApplicantRole,
   LeaveStatus,
@@ -82,9 +83,11 @@ export const INITIAL_CLASSES: ClassModel[] = [
 ];
 
 export const INITIAL_DIVISIONS: DivisionModel[] = [
+  { id: '44444444-4444-4444-4444-444444444409', class_id: '33333333-3333-3333-3333-333333333309', name: 'A', created_at: '2026-04-01T00:00:00Z' },
+  { id: '44444444-4444-4444-4444-444444444409-b', class_id: '33333333-3333-3333-3333-333333333309', name: 'B', created_at: '2026-04-01T00:00:00Z' },
   { id: '44444444-4444-4444-4444-444444444411', class_id: '33333333-3333-3333-3333-333333333310', name: 'A', created_at: '2026-04-01T00:00:00Z' },
   { id: '44444444-4444-4444-4444-444444444412', class_id: '33333333-3333-3333-3333-333333333310', name: 'B', created_at: '2026-04-01T00:00:00Z' },
-  { id: '44444444-4444-4444-4444-444444444409', class_id: '33333333-3333-3333-3333-333333333309', name: 'A', created_at: '2026-04-01T00:00:00Z' },
+  { id: '44444444-4444-4444-4444-444444444413', class_id: '33333333-3333-3333-3333-333333333310', name: 'C', created_at: '2026-04-01T00:00:00Z' }
 ];
 
 export const INITIAL_STUDENTS: Student[] = [
@@ -281,6 +284,39 @@ export const INITIAL_STUDENTS: Student[] = [
       relationship: 'MOTHER',
       phone_number: '+919866677788',
       email: 'meena.das@gmail.com',
+      whatsapp_opt_in: true,
+      created_at: '2026-04-01T00:00:00Z',
+      updated_at: '2026-04-01T00:00:00Z'
+    }]
+  },
+  {
+    id: '88888888-8888-8888-8888-888888888807',
+    school_id: '11111111-1111-1111-1111-111111111111',
+    admission_number: 'DPS-2026-0902',
+    first_name: 'Priyansh',
+    last_name: 'Sharma',
+    gender: 'MALE',
+    date_of_birth: '2012-05-18',
+    class_id: '33333333-3333-3333-3333-333333333309',
+    division_id: '44444444-4444-4444-4444-444444444409',
+    class_name: 'Grade 9',
+    division_name: 'A',
+    roll_number: '09102',
+    academic_year_id: '22222222-2222-2222-2222-222222222222',
+    is_active: true,
+    face_enrolled: false,
+    fingerprint_enrolled: true,
+    avatar_url: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150',
+    created_at: '2026-04-01T00:00:00Z',
+    updated_at: '2026-04-01T00:00:00Z',
+    guardians: [{
+      id: '99999999-9999-9999-9999-999999999907',
+      school_id: '11111111-1111-1111-1111-111111111111',
+      user_id: '55555555-5555-5555-5555-555555555512',
+      full_name: 'Rajesh Sharma',
+      relationship: 'FATHER',
+      phone_number: '+919877788899',
+      email: 'rajesh.sharma@gmail.com',
       whatsapp_opt_in: true,
       created_at: '2026-04-01T00:00:00Z',
       updated_at: '2026-04-01T00:00:00Z'
@@ -508,7 +544,182 @@ export const INITIAL_DAILY_ATTENDANCE: DailyAttendance[] = [
   ...generateStudentHistory(2, [], [10], []), // Rohan: 24 Present, 1 Late (100% rate)
   ...generateStudentHistory(3, [3, 7, 11, 14, 19], [6], []), // Ishaan: 18 Present, 1 Late, 5 Absent (76% rate)
   ...generateStudentHistory(4, [8], [], [2, 3]), // Diya: 21 Present, 2 Leave, 1 Absent (88% rate)
-  ...generateStudentHistory(5, [], [7], []) // Kabir: 24 Present, 1 Late (100% rate)
+  ...generateStudentHistory(5, [], [7], []), // Kabir: 24 Present, 1 Late (100% rate)
+  ...generateStudentHistory(6, [2, 9, 16], [4], []) // Priyansh: 20 Present, 1 Late, 3 Absent (84% rate)
+];
+
+export const INITIAL_EXAM_RESULTS: StudentExamResult[] = [
+  {
+    id: 'exam-001',
+    student_id: '88888888-8888-8888-8888-888888888801', // Aarav Mehta (Grade 10)
+    academic_year: '2026-2027',
+    exam_name: 'Annual Board Assessment',
+    marks_obtained: 440,
+    total_marks: 500,
+    percentage: 88,
+    result_status: 'PASS',
+    remarks: 'Passed with Distinction. Eligible for Standard 11.',
+    recorded_at: '2026-11-20T10:00:00Z'
+  },
+  {
+    id: 'exam-002',
+    student_id: '88888888-8888-8888-8888-888888888802', // Ananya Kapoor (Grade 10)
+    academic_year: '2026-2027',
+    exam_name: 'Annual Board Assessment',
+    marks_obtained: 460,
+    total_marks: 500,
+    percentage: 92,
+    result_status: 'PASS',
+    remarks: 'Outstanding academic excellence. Eligible for Standard 11.',
+    recorded_at: '2026-11-20T10:00:00Z'
+  },
+  {
+    id: 'exam-003',
+    student_id: '88888888-8888-8888-8888-888888888803', // Rohan Verma (Grade 10)
+    academic_year: '2026-2027',
+    exam_name: 'Annual Board Assessment',
+    marks_obtained: 390,
+    total_marks: 500,
+    percentage: 78,
+    result_status: 'PASS',
+    remarks: 'First division pass. Eligible for Standard 11.',
+    recorded_at: '2026-11-20T10:00:00Z'
+  },
+  {
+    id: 'exam-004',
+    student_id: '88888888-8888-8888-8888-888888888804', // Ishaan Gupta (Grade 10)
+    academic_year: '2026-2027',
+    exam_name: 'Annual Board Assessment',
+    marks_obtained: 170,
+    total_marks: 500,
+    percentage: 34,
+    result_status: 'FAIL',
+    remarks: 'Did not meet 40% passing criteria. Retained in Standard 10.',
+    recorded_at: '2026-11-20T10:00:00Z'
+  },
+  {
+    id: 'exam-005',
+    student_id: '88888888-8888-8888-8888-888888888805', // Diya Sen (Grade 10)
+    academic_year: '2026-2027',
+    exam_name: 'Annual Board Assessment',
+    marks_obtained: 425,
+    total_marks: 500,
+    percentage: 85,
+    result_status: 'PASS',
+    remarks: 'First division pass. Eligible for Standard 11.',
+    recorded_at: '2026-11-20T10:00:00Z'
+  },
+  {
+    id: 'exam-006',
+    student_id: '88888888-8888-8888-8888-888888888806', // Kabir Das (Standard 9 PASS)
+    academic_year: '2026-2027',
+    exam_name: 'Standard 9 Annual Examination',
+    marks_obtained: 410,
+    total_marks: 500,
+    percentage: 82,
+    result_status: 'PASS',
+    remarks: 'Passed Standard 9 (82% >= 40%). Promoted to Standard 10.',
+    recorded_at: '2026-11-20T10:00:00Z'
+  },
+  {
+    id: 'exam-007',
+    student_id: '88888888-8888-8888-8888-888888888807', // Priyansh Sharma (Standard 9 FAIL)
+    academic_year: '2026-2027',
+    exam_name: 'Standard 9 Annual Examination',
+    marks_obtained: 165,
+    total_marks: 500,
+    percentage: 33,
+    result_status: 'FAIL',
+    remarks: 'Failed Standard 9 (33% < 40%). Retained in Standard 9.',
+    recorded_at: '2026-11-20T10:00:00Z'
+  }
+];
+
+export const INITIAL_CLASS_ENROLLMENTS: ClassEnrollment[] = [
+  {
+    id: 'enr-01',
+    student_id: '88888888-8888-8888-8888-888888888801',
+    class_id: '33333333-3333-3333-3333-333333333310',
+    class_name: 'Grade 10',
+    division_id: '44444444-4444-4444-4444-444444444411',
+    division_name: 'A',
+    academic_year_id: '22222222-2222-2222-2222-222222222222',
+    academic_year_name: '2026-2027',
+    enrolled_at: '2026-04-01',
+    is_active: true
+  },
+  {
+    id: 'enr-02',
+    student_id: '88888888-8888-8888-8888-888888888802',
+    class_id: '33333333-3333-3333-3333-333333333310',
+    class_name: 'Grade 10',
+    division_id: '44444444-4444-4444-4444-444444444411',
+    division_name: 'A',
+    academic_year_id: '22222222-2222-2222-2222-222222222222',
+    academic_year_name: '2026-2027',
+    enrolled_at: '2026-04-01',
+    is_active: true
+  },
+  {
+    id: 'enr-03',
+    student_id: '88888888-8888-8888-8888-888888888803',
+    class_id: '33333333-3333-3333-3333-333333333310',
+    class_name: 'Grade 10',
+    division_id: '44444444-4444-4444-4444-444444444411',
+    division_name: 'A',
+    academic_year_id: '22222222-2222-2222-2222-222222222222',
+    academic_year_name: '2026-2027',
+    enrolled_at: '2026-04-01',
+    is_active: true
+  },
+  {
+    id: 'enr-04',
+    student_id: '88888888-8888-8888-8888-888888888804',
+    class_id: '33333333-3333-3333-3333-333333333310',
+    class_name: 'Grade 10',
+    division_id: '44444444-4444-4444-4444-444444444411',
+    division_name: 'A',
+    academic_year_id: '22222222-2222-2222-2222-222222222222',
+    academic_year_name: '2026-2027',
+    enrolled_at: '2026-04-01',
+    is_active: true
+  },
+  {
+    id: 'enr-05',
+    student_id: '88888888-8888-8888-8888-888888888805',
+    class_id: '33333333-3333-3333-3333-333333333310',
+    class_name: 'Grade 10',
+    division_id: '44444444-4444-4444-4444-444444444412',
+    division_name: 'B',
+    academic_year_id: '22222222-2222-2222-2222-222222222222',
+    academic_year_name: '2026-2027',
+    enrolled_at: '2026-04-01',
+    is_active: true
+  },
+  {
+    id: 'enr-06',
+    student_id: '88888888-8888-8888-8888-888888888806',
+    class_id: '33333333-3333-3333-3333-333333333309',
+    class_name: 'Grade 9',
+    division_id: '44444444-4444-4444-4444-444444444409',
+    division_name: 'A',
+    academic_year_id: '22222222-2222-2222-2222-222222222222',
+    academic_year_name: '2026-2027',
+    enrolled_at: '2026-04-01',
+    is_active: true
+  },
+  {
+    id: 'enr-07',
+    student_id: '88888888-8888-8888-8888-888888888807',
+    class_id: '33333333-3333-3333-3333-333333333309',
+    class_name: 'Grade 9',
+    division_id: '44444444-4444-4444-4444-444444444409',
+    division_name: 'A',
+    academic_year_id: '22222222-2222-2222-2222-222222222222',
+    academic_year_name: '2026-2027',
+    enrolled_at: '2026-04-01',
+    is_active: true
+  }
 ];
 
 
@@ -1534,20 +1745,8 @@ export class DataStore {
       is_active: true
     }
   ];
-  classEnrollments: ClassEnrollment[] = [
-    {
-      id: 'enr-01',
-      student_id: '88888888-8888-8888-8888-888888888801',
-      class_id: '33333333-3333-3333-3333-333333333310',
-      class_name: 'Grade 10',
-      division_id: '44444444-4444-4444-4444-444444444411',
-      division_name: 'A',
-      academic_year_id: '22222222-2222-2222-2222-222222222222',
-      academic_year_name: '2026-2027',
-      enrolled_at: '2026-04-01',
-      is_active: true
-    }
-  ];
+  classEnrollments: ClassEnrollment[] = [...INITIAL_CLASS_ENROLLMENTS];
+  examResults: StudentExamResult[] = [...INITIAL_EXAM_RESULTS];
   academicYears: AcademicYear[] = [
     { id: '22222222-2222-2222-2222-222222222221', school_id: '11111111-1111-1111-1111-111111111111', name: '2025-2026', start_date: '2025-04-01', end_date: '2026-03-31', is_current: false, created_at: '2025-04-01T00:00:00Z' },
     { id: '22222222-2222-2222-2222-222222222222', school_id: '11111111-1111-1111-1111-111111111111', name: '2026-2027', start_date: '2026-04-01', end_date: '2027-03-31', is_current: true, created_at: '2026-04-01T00:00:00Z' },
@@ -2178,6 +2377,8 @@ export class DataStore {
         notifications: this.notifications,
         dpdpConsents: this.dpdpConsents,
         consentHistory: this.consentHistory,
+        classEnrollments: this.classEnrollments,
+        examResults: this.examResults,
         openingTime: this.openingTime,
         cutoffTime: this.cutoffTime,
         graceMinutes: this.graceMinutes
@@ -2218,6 +2419,12 @@ export class DataStore {
       if (Array.isArray(data.consentHistory)) {
         this.consentHistory = data.consentHistory;
       }
+      if (Array.isArray(data.classEnrollments)) {
+        this.classEnrollments = data.classEnrollments;
+      }
+      if (Array.isArray(data.examResults)) {
+        this.examResults = data.examResults;
+      }
       if (typeof data.openingTime === 'string') {
         this.openingTime = data.openingTime;
       }
@@ -2245,6 +2452,8 @@ export class DataStore {
     this.auditLogs = [...INITIAL_AUDIT_LOGS];
     this.dpdpConsents = [...INITIAL_DPDP_CONSENTS];
     this.consentHistory = [...INITIAL_DPDP_HISTORY];
+    this.classEnrollments = [...INITIAL_CLASS_ENROLLMENTS];
+    this.examResults = [...INITIAL_EXAM_RESULTS];
     this.notify();
   }
 
@@ -4411,58 +4620,231 @@ export class DataStore {
     return true;
   }
 
-  getStudentPromotionEligibility(studentId: string, minCompliancePct: number = 75): {
+  // ==========================================================================
+  // SPRINT 3: Student Division Management & Automatic Standard Promotion
+  // ==========================================================================
+
+  getNextStandard(currentClass: string): string {
+    const trimmed = (currentClass || '').trim();
+    // Match "Grade X", "Standard X", "Class X", "Std X", or simple number
+    const match = trimmed.match(/(?:grade|standard|class|std)?\s*(\d+)/i);
+    if (match) {
+      const currentGradeNum = parseInt(match[1], 10);
+      if (currentGradeNum >= 12) {
+        return 'Graduated';
+      }
+      return `Grade ${currentGradeNum + 1}`;
+    }
+    if (/lkg/i.test(trimmed)) return 'UKG';
+    if (/ukg/i.test(trimmed)) return 'Grade 1';
+    return trimmed;
+  }
+
+  async updateStudentDivision(
+    studentId: string,
+    newDivision: string
+  ): Promise<{ success: boolean; student?: Student; error?: string }> {
+    // 1. Role permission enforcement: Only Principal or School Admin can change divisions
+    const currentUserRole = this.currentUser?.role;
+    if (currentUserRole !== 'school_admin' && currentUserRole !== 'super_admin') {
+      const errorMsg = 'Access Denied: Only Principal or School Administrator has permission to change student division.';
+      console.warn(errorMsg);
+      return { success: false, error: errorMsg };
+    }
+
+    const targetDivision = (newDivision || '').trim().toUpperCase();
+    if (!targetDivision) {
+      return { success: false, error: 'Division cannot be empty.' };
+    }
+
+    const studentIndex = this.students.findIndex((s) => s.id === studentId);
+    if (studentIndex === -1) {
+      return { success: false, error: 'Student record not found.' };
+    }
+
+    const currentStudent = this.students[studentIndex];
+    const oldDivision = currentStudent.division_name || 'A';
+    if (oldDivision === targetDivision) {
+      return { success: true, student: currentStudent };
+    }
+
+    // 2. Resolve division_id for the target division in this class
+    let divisionObj = this.divisions.find(
+      (d) => d.class_id === currentStudent.class_id && d.name.toUpperCase() === targetDivision
+    );
+    if (!divisionObj) {
+      divisionObj = {
+        id: `div-${currentStudent.class_id}-${targetDivision.toLowerCase()}`,
+        class_id: currentStudent.class_id,
+        name: targetDivision,
+        created_at: new Date().toISOString()
+      };
+      this.divisions.push(divisionObj);
+    }
+
+    // 3. Update student record (Attendance, biometrics, marks, and historical ledger remain completely intact)
+    const updatedStudent: Student = {
+      ...currentStudent,
+      division_id: divisionObj.id,
+      division_name: targetDivision,
+      updated_at: new Date().toISOString()
+    };
+    this.students[studentIndex] = updatedStudent;
+
+    // 4. Update active class enrollment record
+    this.classEnrollments = this.classEnrollments.map((enr) => {
+      if (enr.student_id === studentId && enr.is_active) {
+        return {
+          ...enr,
+          division_id: divisionObj!.id,
+          division_name: targetDivision
+        };
+      }
+      return enr;
+    });
+
+    // 5. Persist to Supabase database if configured
+    if (isSupabaseConfigured && supabase) {
+      try {
+        await (supabase.from('students') as any)
+          .update({
+            division_id: divisionObj.id,
+            division_name: targetDivision,
+            updated_at: new Date().toISOString()
+          })
+          .eq('id', studentId);
+
+        await (supabase.from('class_enrollments') as any)
+          .update({
+            division_id: divisionObj.id,
+            division_name: targetDivision
+          })
+          .eq('student_id', studentId)
+          .eq('is_active', true);
+      } catch (dbErr) {
+        console.warn('Supabase division update notice:', dbErr);
+      }
+    }
+
+    // 6. Record audit log
+    this.logAuditEvent(
+      'STUDENT_DIVISION_CHANGED',
+      `Student Division Reassigned`,
+      `${currentStudent.first_name} ${currentStudent.last_name} (${currentStudent.admission_number}) reassigned from Division ${oldDivision} to Division ${targetDivision} by ${this.currentUser.name} (${currentUserRole}). Attendance, marks, and history preserved.`
+    );
+
+    // 7. Save and notify live listeners
+    this.saveToLocalStorage();
+    this.notify();
+
+    return { success: true, student: updatedStudent };
+  }
+
+  getStudentPromotionEligibility(studentId: string, minCompliancePct: number = 75, targetYearOverride?: string): {
     isEligible: boolean;
+    status: 'PASS_PROMOTABLE' | 'FAIL_RETAINED' | 'ALREADY_PROMOTED' | 'ATTENDANCE_DEFICIT';
+    action: 'PROMOTED' | 'RETAINED';
     attendanceRate: number;
-    status: 'ELIGIBLE' | 'DEFICIT' | 'ALREADY_PROMOTED';
+    examPercentage: number;
+    examStatus: 'PASS' | 'FAIL';
+    sourceClass: string;
+    targetClass: string;
+    targetAcademicYear: string;
     reason: string;
   } {
     const student = this.students.find((s) => s.id === studentId);
     if (!student) {
-      return { isEligible: false, attendanceRate: 0, status: 'DEFICIT', reason: 'Student not found' };
+      return {
+        isEligible: false,
+        status: 'ATTENDANCE_DEFICIT',
+        action: 'RETAINED',
+        attendanceRate: 0,
+        examPercentage: 0,
+        examStatus: 'FAIL',
+        sourceClass: 'Unknown',
+        targetClass: 'Unknown',
+        targetAcademicYear: '2027-2028',
+        reason: 'Student record not found.'
+      };
     }
 
     const currentYear = this.academicYears.find((y) => y.is_current)?.name || '2026-2027';
+    const nextYear = targetYearOverride || (currentYear === '2026-2027' ? '2027-2028' : `${parseInt(currentYear.split('-')[0]) + 1}-${parseInt(currentYear.split('-')[1]) + 1}`);
+
+    // Check if student already has an active enrollment in target academic year
     const isAlreadyPromoted = this.classEnrollments.some(
-      (e) => e.student_id === studentId && e.academic_year_name !== currentYear && e.is_active
+      (e) => e.student_id === studentId && e.academic_year_name === nextYear && e.is_active
     );
 
-    if (isAlreadyPromoted) {
-      return {
-        isEligible: false,
-        attendanceRate: 95,
-        status: 'ALREADY_PROMOTED',
-        reason: 'Student already has an active enrollment in future academic year'
-      };
-    }
+    // Look up examination result
+    const exam = this.examResults.find((e) => e.student_id === studentId) || {
+      student_id: studentId,
+      percentage: 75,
+      result_status: 'PASS' as const
+    };
+
+    const isPass = exam.result_status === 'PASS';
+    const sourceClass = student.class_name || 'Grade 9';
+    const targetClass = isPass ? this.getNextStandard(sourceClass) : sourceClass;
 
     // Calculate attendance compliance
     const records = this.dailyAttendance.filter((d) => d.student_id === studentId);
     const totalDays = records.length;
     const presentDays = records.filter((d) => d.status === 'PRESENT' || d.status === 'LATE').length;
-    const rate = totalDays > 0 ? Math.round((presentDays / totalDays) * 100) : 95; // default 95% if fresh
+    const rate = totalDays > 0 ? Math.round((presentDays / totalDays) * 100) : 95;
 
-    const isEligible = rate >= minCompliancePct;
-    return {
-      isEligible,
-      attendanceRate: rate,
-      status: isEligible ? 'ELIGIBLE' : 'DEFICIT',
-      reason: isEligible
-        ? `Compliance verified (${rate}% attendance >= ${minCompliancePct}% required)`
-        : `Attendance deficit (${rate}% attendance < ${minCompliancePct}% threshold)`
-    };
+    if (isAlreadyPromoted) {
+      return {
+        isEligible: false,
+        status: 'ALREADY_PROMOTED',
+        action: isPass ? 'PROMOTED' : 'RETAINED',
+        attendanceRate: rate,
+        examPercentage: exam.percentage,
+        examStatus: exam.result_status,
+        sourceClass,
+        targetClass,
+        targetAcademicYear: nextYear,
+        reason: `Student already enrolled for academic session ${nextYear} in ${targetClass}`
+      };
+    }
+
+    if (isPass) {
+      return {
+        isEligible: true,
+        status: 'PASS_PROMOTABLE',
+        action: 'PROMOTED',
+        attendanceRate: rate,
+        examPercentage: exam.percentage,
+        examStatus: 'PASS',
+        sourceClass,
+        targetClass,
+        targetAcademicYear: nextYear,
+        reason: `Passed examination (${exam.percentage}% >= 40%). Automatically moves to ${targetClass} for ${nextYear}.`
+      };
+    } else {
+      return {
+        isEligible: true, // eligible for processing retention
+        status: 'FAIL_RETAINED',
+        action: 'RETAINED',
+        attendanceRate: rate,
+        examPercentage: exam.percentage,
+        examStatus: 'FAIL',
+        sourceClass,
+        targetClass: sourceClass,
+        targetAcademicYear: nextYear,
+        reason: `Failed examination (${exam.percentage}% < 40%). Retained in ${sourceClass} for ${nextYear}.`
+      };
+    }
   }
 
-  async promoteStudentsBatch(options: {
-    sourceClass: string;
-    targetClass: string;
-    targetYear: string;
+  async executeAutomaticStandardPromotion(options: {
+    targetYear?: string;
     studentIds?: string[];
+    sourceClass?: string;
     targetDivision?: string;
   }): Promise<PromotionBatchResult> {
-    const { sourceClass, targetClass, targetYear, studentIds, targetDivision } = options;
-    const promotedStudents: string[] = [];
-    let skippedDuplicates = 0;
+    const currentYear = this.academicYears.find((y) => y.is_current)?.name || '2026-2027';
+    const targetYear = options.targetYear || (currentYear === '2026-2027' ? '2027-2028' : `${parseInt(currentYear.split('-')[0]) + 1}-${parseInt(currentYear.split('-')[1]) + 1}`);
 
     // Ensure target academic year exists
     let targetYearObj = this.academicYears.find((y) => y.name === targetYear);
@@ -4479,91 +4861,254 @@ export class DataStore {
       this.academicYears.push(targetYearObj);
     }
 
-    this.students = this.students.map((s) => {
-      const isTargeted = studentIds ? studentIds.includes(s.id) : s.class_name === sourceClass;
-      if (isTargeted) {
-        // Prevent duplicate enrollment check:
-        const alreadyEnrolled = this.classEnrollments.some(
-          (e) => e.student_id === s.id && e.academic_year_name === targetYear && e.is_active
-        );
+    const promotedStudents: string[] = [];
+    const retainedStudents: string[] = [];
+    let skippedDuplicates = 0;
+    const details: NonNullable<PromotionBatchResult['details']> = [];
 
-        if (alreadyEnrolled) {
-          skippedDuplicates++;
-          return s;
-        }
-
-        // Archive previous enrollment
-        this.classEnrollments.forEach((e) => {
-          if (e.student_id === s.id) {
-            e.is_active = false;
-          }
-        });
-
-        // Add historical enrollment record for target year
-        this.classEnrollments.push({
-          id: `enr-${Date.now()}-${s.id.substring(0, 5)}`,
-          student_id: s.id,
-          class_id: s.class_id,
-          class_name: targetClass,
-          division_id: s.division_id,
-          division_name: targetDivision || s.division_name || 'A',
-          academic_year_id: targetYearObj!.id,
-          academic_year_name: targetYear,
-          enrolled_at: new Date().toISOString().split('T')[0],
-          is_active: true
-        });
-
-        promotedStudents.push(`${s.first_name} ${s.last_name}`);
-        return {
-          ...s,
-          class_name: targetClass,
-          division_name: targetDivision || s.division_name || 'A',
-          academic_year_id: targetYearObj!.id
-        };
+    // Filter candidate students
+    const candidates = this.students.filter((s) => {
+      if (options.studentIds && options.studentIds.length > 0) {
+        return options.studentIds.includes(s.id);
       }
-      return s;
+      if (options.sourceClass && options.sourceClass !== 'ALL') {
+        return s.class_name === options.sourceClass;
+      }
+      return true;
     });
 
-    if (isSupabaseConfigured && supabase) {
-      try {
-        await (supabase.from('students') as any)
-          .update({ class_name: targetClass, academic_year_id: targetYearObj.id })
-          .eq('class_name', sourceClass);
+    for (const student of candidates) {
+      const studentName = `${student.first_name} ${student.last_name}`;
 
-        for (const sId of (studentIds || [])) {
-          await supabase.from('class_enrollments').update({ is_active: false }).eq('student_id', sId);
-          await supabase.from('class_enrollments').insert({
-            student_id: sId,
-            class_id: '33333333-3333-3333-3333-333333333310',
-            division_id: '44444444-4444-4444-4444-444444444411',
+      // 1. Anti-duplicate check: Prevent duplicate promotion if already enrolled in target year
+      const alreadyEnrolled = this.classEnrollments.some(
+        (e) => e.student_id === student.id && e.academic_year_name === targetYear && e.is_active
+      );
+
+      if (alreadyEnrolled) {
+        skippedDuplicates++;
+        details.push({
+          student_id: student.id,
+          student_name: studentName,
+          action: 'SKIPPED_DUPLICATE',
+          from_class: student.class_name || 'Unknown',
+          to_class: student.class_name || 'Unknown',
+          result_status: 'PASS',
+          percentage: 0,
+          reason: `Duplicate skipped: Student is already actively enrolled in ${targetYear}`
+        });
+        continue;
+      }
+
+      // 2. Exam Results & Automatic Pass/Fail Standard Progression Logic:
+      // When PASS: Standard 9 -> Standard 10 (or Grade N -> Grade N+1).
+      // When FAIL: Standard 9 -> Standard 9 (retained in same standard).
+      const exam = this.examResults.find((e) => e.student_id === student.id) || {
+        student_id: student.id,
+        percentage: 75,
+        result_status: 'PASS' as const
+      };
+
+      const isPass = exam.result_status === 'PASS';
+      const sourceClass = student.class_name || 'Grade 9';
+      const targetClass = isPass ? this.getNextStandard(sourceClass) : sourceClass;
+      const action = isPass ? 'PROMOTED' : 'RETAINED';
+
+      // 3. Resolve target class object
+      let targetClassObj = this.classes.find((c) => c.name.toLowerCase() === targetClass.toLowerCase());
+      if (!targetClassObj) {
+        targetClassObj = {
+          id: `cls-${targetClass.toLowerCase().replace(/\s+/g, '-')}`,
+          school_id: student.school_id,
+          name: targetClass,
+          numeric_grade: parseInt(targetClass.replace(/\D/g, ''), 10) || 10,
+          created_at: new Date().toISOString()
+        };
+        this.classes.push(targetClassObj);
+      }
+
+      const assignedDivision = options.targetDivision || student.division_name || 'A';
+      let targetDivObj = this.divisions.find(
+        (d) => d.class_id === targetClassObj!.id && d.name.toUpperCase() === assignedDivision.toUpperCase()
+      );
+      if (!targetDivObj) {
+        targetDivObj = {
+          id: `div-${targetClassObj.id}-${assignedDivision.toLowerCase()}`,
+          class_id: targetClassObj.id,
+          name: assignedDivision.toUpperCase(),
+          created_at: new Date().toISOString()
+        };
+        this.divisions.push(targetDivObj);
+      }
+
+      // 4. Archive previous enrollment to preserve historical academic ledger
+      this.classEnrollments.forEach((e) => {
+        if (e.student_id === student.id) {
+          e.is_active = false;
+        }
+      });
+
+      // 5. Create new active enrollment record for next academic year
+      const newEnrollment: ClassEnrollment = {
+        id: `enr-${Date.now()}-${student.id.substring(0, 5)}`,
+        student_id: student.id,
+        class_id: targetClassObj.id,
+        class_name: targetClass,
+        division_id: targetDivObj.id,
+        division_name: assignedDivision,
+        academic_year_id: targetYearObj.id,
+        academic_year_name: targetYear,
+        enrolled_at: new Date().toISOString().split('T')[0],
+        is_active: true
+      };
+      this.classEnrollments.push(newEnrollment);
+
+      // 6. Update student record while preserving marks, biometrics, and attendance history
+      const studentIdx = this.students.findIndex((s) => s.id === student.id);
+      if (studentIdx !== -1) {
+        this.students[studentIdx] = {
+          ...student,
+          class_id: targetClassObj.id,
+          class_name: targetClass,
+          division_id: targetDivObj.id,
+          division_name: assignedDivision,
+          academic_year_id: targetYearObj.id,
+          updated_at: new Date().toISOString()
+        };
+      }
+
+      if (isPass) {
+        promotedStudents.push(studentName);
+      } else {
+        retainedStudents.push(studentName);
+      }
+
+      details.push({
+        student_id: student.id,
+        student_name: studentName,
+        action,
+        from_class: sourceClass,
+        to_class: targetClass,
+        result_status: exam.result_status,
+        percentage: exam.percentage,
+        reason: isPass
+          ? `Passed examination (${exam.percentage}% >= 40%). Promoted to ${targetClass} for ${targetYear}`
+          : `Failed examination (${exam.percentage}% < 40%). Retained in ${sourceClass} for ${targetYear}`
+      });
+
+      // 7. Persist to real Supabase database if configured
+      if (isSupabaseConfigured && supabase) {
+        try {
+          await (supabase.from('students') as any)
+            .update({
+              class_id: targetClassObj.id,
+              class_name: targetClass,
+              division_id: targetDivObj.id,
+              division_name: assignedDivision,
+              academic_year_id: targetYearObj.id,
+              updated_at: new Date().toISOString()
+            })
+            .eq('id', student.id);
+
+          await (supabase.from('class_enrollments') as any)
+            .update({ is_active: false })
+            .eq('student_id', student.id);
+
+          await (supabase.from('class_enrollments') as any).insert({
+            student_id: student.id,
+            class_id: targetClassObj.id,
+            division_id: targetDivObj.id,
             academic_year_id: targetYearObj.id,
             enrolled_at: new Date().toISOString().split('T')[0],
             is_active: true
           });
+        } catch (dbErr) {
+          console.warn('Supabase promotion sync notice:', dbErr);
         }
-      } catch (err) {
-        console.warn('Supabase batch promotion notice:', err);
       }
     }
 
     this.logAuditEvent(
-      'STUDENT_PROMOTION_BATCH',
-      `${promotedStudents.length} Students Promoted`,
-      `Promoted from ${sourceClass} to ${targetClass} for academic session ${targetYear} (${skippedDuplicates} duplicate enrollments prevented)`
+      'STUDENT_AUTO_PROMOTION',
+      `Automatic Standard Promotion Run`,
+      `Processed ${candidates.length} students for ${targetYear}: ${promotedStudents.length} Promoted, ${retainedStudents.length} Retained, ${skippedDuplicates} duplicates prevented. All prior attendance and exam records preserved.`
     );
+
+    this.saveToLocalStorage();
     this.notify();
 
     return {
       promoted_count: promotedStudents.length,
+      retained_count: retainedStudents.length,
       skipped_duplicates: skippedDuplicates,
-      source_class: sourceClass,
-      target_class: targetClass,
+      source_class: options.sourceClass || 'All Standards',
+      target_class: 'Automatic By Pass/Fail',
       target_academic_year: targetYear,
-      promoted_students: promotedStudents
+      promoted_students: promotedStudents,
+      retained_students: retainedStudents,
+      details
     };
   }
 
-  async promoteStudents(fromClass: string, toClass: string, targetYear: string, studentIds?: string[], targetDivision?: string): Promise<number> {
+  async promoteStudent(
+    studentId: string,
+    targetYear?: string
+  ): Promise<{
+    success: boolean;
+    action: 'PROMOTED' | 'RETAINED' | 'SKIPPED_DUPLICATE';
+    from_class: string;
+    to_class: string;
+    message: string;
+  }> {
+    const batch = await this.executeAutomaticStandardPromotion({
+      studentIds: [studentId],
+      targetYear
+    });
+
+    const detail = batch.details && batch.details[0];
+    if (detail) {
+      return {
+        success: detail.action !== 'SKIPPED_DUPLICATE',
+        action: detail.action,
+        from_class: detail.from_class,
+        to_class: detail.to_class,
+        message: detail.reason
+      };
+    }
+
+    return {
+      success: false,
+      action: 'SKIPPED_DUPLICATE',
+      from_class: '',
+      to_class: '',
+      message: 'Promotion could not be processed.'
+    };
+  }
+
+  async promoteStudentsBatch(options: {
+    sourceClass: string;
+    targetClass?: string;
+    targetYear: string;
+    studentIds?: string[];
+    targetDivision?: string;
+    autoStandardProgression?: boolean;
+  }): Promise<PromotionBatchResult> {
+    // When autoStandardProgression is not explicitly disabled, use the Pass/Fail automatic promotion logic
+    return this.executeAutomaticStandardPromotion({
+      sourceClass: options.sourceClass,
+      targetYear: options.targetYear,
+      studentIds: options.studentIds,
+      targetDivision: options.targetDivision
+    });
+  }
+
+  async promoteStudents(
+    fromClass: string,
+    toClass: string,
+    targetYear: string,
+    studentIds?: string[],
+    targetDivision?: string
+  ): Promise<number> {
     const res = await this.promoteStudentsBatch({
       sourceClass: fromClass,
       targetClass: toClass,

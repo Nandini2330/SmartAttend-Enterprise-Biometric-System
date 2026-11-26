@@ -45,6 +45,27 @@ export const StudentsPage: React.FC = () => {
   const [csvText, setCsvText] = useState('');
   const [bulkFeedback, setBulkFeedback] = useState<string | null>(null);
 
+  // Division Change State & Permissions
+  const isAdmin = store.currentUser?.role === 'school_admin' || store.currentUser?.role === 'super_admin';
+  const [divisionUpdateMsg, setDivisionUpdateMsg] = useState<{ msg: string; type: 'success' | 'error' } | null>(null);
+
+  const handleDivisionChange = async (studentId: string, newDiv: string) => {
+    const res = await store.updateStudentDivision(studentId, newDiv);
+    if (res.success && res.student) {
+      setDivisionUpdateMsg({
+        msg: `Division successfully updated to Division ${newDiv} for ${res.student.first_name} ${res.student.last_name} (${res.student.admission_number}). Attendance and academic records preserved.`,
+        type: 'success'
+      });
+      setTimeout(() => setDivisionUpdateMsg(null), 4000);
+    } else {
+      setDivisionUpdateMsg({
+        msg: res.error || 'Failed to update student division.',
+        type: 'error'
+      });
+      setTimeout(() => setDivisionUpdateMsg(null), 5000);
+    }
+  };
+
   const filteredStudents = store.students.filter((std) => {
     const matchesSearch =
       std.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -261,6 +282,24 @@ export const StudentsPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Division Reassignment Status Feedback */}
+      {divisionUpdateMsg && (
+        <div
+          className={`p-3 rounded-xl border text-xs font-semibold flex items-center space-x-2 transition-all ${
+            divisionUpdateMsg.type === 'success'
+              ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200 border-emerald-200 dark:border-emerald-800'
+              : 'bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-200 border-rose-200 dark:border-rose-800'
+          }`}
+        >
+          {divisionUpdateMsg.type === 'success' ? (
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+          ) : (
+            <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" />
+          )}
+          <span>{divisionUpdateMsg.msg}</span>
+        </div>
+      )}
+
       {/* Student Directory Table */}
       <div className="card-enterprise overflow-hidden">
         <div className="overflow-x-auto">
@@ -305,9 +344,28 @@ export const StudentsPage: React.FC = () => {
                     <td className="py-3 px-4 font-mono text-slate-800 dark:text-slate-200">{std.admission_number}</td>
 
                     <td className="py-3 px-4">
-                      <span className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-2 py-0.5 rounded text-[11px] font-semibold">
-                        {std.class_name} - {std.division_name}
-                      </span>
+                      {isAdmin ? (
+                        <div className="flex items-center space-x-1.5">
+                          <span className="font-semibold text-slate-800 dark:text-slate-200 text-[11px] whitespace-nowrap">
+                            {std.class_name} -
+                          </span>
+                          <select
+                            value={std.division_name || 'A'}
+                            onChange={(e) => handleDivisionChange(std.id, e.target.value)}
+                            title="Admin/Principal: Change Student Division"
+                            className="bg-brand-50 hover:bg-brand-100 dark:bg-brand-950/70 dark:hover:bg-brand-900/60 text-brand-700 dark:text-brand-300 font-bold rounded px-1.5 py-0.5 text-[11px] border border-brand-200 dark:border-brand-800 cursor-pointer focus:ring-1 focus:ring-brand-500 outline-none transition-colors"
+                          >
+                            <option value="A">Div A</option>
+                            <option value="B">Div B</option>
+                            <option value="C">Div C</option>
+                            <option value="D">Div D</option>
+                          </select>
+                        </div>
+                      ) : (
+                        <span className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-2 py-0.5 rounded text-[11px] font-semibold">
+                          {std.class_name} - {std.division_name}
+                        </span>
+                      )}
                     </td>
 
                     <td className="py-3 px-4 font-mono text-slate-700 dark:text-slate-300">{std.roll_number}</td>

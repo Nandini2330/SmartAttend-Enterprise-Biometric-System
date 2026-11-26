@@ -414,6 +414,7 @@ export const ClassesPage: React.FC = () => {
                   onChange={(e) => setPromoTargetClass(e.target.value)}
                   className="w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
                 >
+                  <option value="Automatic">Automatic (Pass → Next Std, Fail → Same Std)</option>
                   <option value="Grade 10">Grade 10</option>
                   <option value="Grade 11">Grade 11</option>
                   <option value="Grade 12">Grade 12</option>
@@ -505,22 +506,25 @@ export const ClassesPage: React.FC = () => {
               <table className="w-full text-left text-xs">
                 <thead>
                   <tr className="border-b border-slate-100 dark:border-slate-800 text-slate-400 font-semibold uppercase text-[10px]">
-                    <th className="py-2.5 w-10">{t.actions}</th>
+                    <th className="py-2.5 w-8"></th>
                     <th className="py-2.5">{t.colStudent}</th>
                     <th className="py-2.5">{t.colAdmissionNo}</th>
                     <th className="py-2.5">{t.colClassDivision}</th>
+                    <th className="py-2.5">Exam Result</th>
                     <th className="py-2.5">{t.colCompliance}</th>
                     <th className="py-2.5">{t.colEligibility}</th>
-                    <th className="py-2.5 text-right">{t.colTargetDest}</th>
+                    <th className="py-2.5">Target Destination</th>
+                    <th className="py-2.5 text-right">Action</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                   {store.students
-                    .filter((s) => s.class_name === promoSourceClass && (promoSourceDiv === 'ALL' || s.division_name === promoSourceDiv))
+                    .filter((s) => (promoSourceClass === 'ALL' || s.class_name === promoSourceClass) && (promoSourceDiv === 'ALL' || s.division_name === promoSourceDiv))
                     .map((std) => {
                       const isSelected = selectedStudentIds.includes(std.id);
-                      const eligibility = store.getStudentPromotionEligibility(std.id);
+                      const eligibility = store.getStudentPromotionEligibility(std.id, 75, promoTargetYear);
                       const isAlreadyPromoted = eligibility.status === 'ALREADY_PROMOTED';
+                      const isPass = eligibility.examStatus === 'PASS';
 
                       return (
                         <tr key={std.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
@@ -545,6 +549,17 @@ export const ClassesPage: React.FC = () => {
                           <td className="py-3 font-mono text-slate-500">{std.admission_number}</td>
                           <td className="py-3 text-slate-600 dark:text-slate-300">{std.class_name} ({std.division_name})</td>
                           <td className="py-3 font-mono">
+                            {isPass ? (
+                              <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                                PASS ({eligibility.examPercentage}%)
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
+                                FAIL ({eligibility.examPercentage}%)
+                              </span>
+                            )}
+                          </td>
+                          <td className="py-3 font-mono">
                             <span className="font-bold">{eligibility.attendanceRate}%</span>
                           </td>
                           <td className="py-3">
@@ -552,18 +567,44 @@ export const ClassesPage: React.FC = () => {
                               <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
                                 {t.statusAlreadyPromoted}
                               </span>
-                            ) : eligibility.isEligible ? (
+                            ) : isPass ? (
                               <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
-                                {t.statusPassEligible}
+                                Pass - Promoted
                               </span>
                             ) : (
                               <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
-                                {t.statusAttDeficit}
+                                Fail - Retained
                               </span>
                             )}
                           </td>
-                          <td className="py-3 text-right font-medium text-indigo-600 dark:text-indigo-400 font-mono">
-                            &rarr; {promoTargetClass}-{promoTargetDiv} ({promoTargetYear})
+                          <td className="py-3 font-mono text-xs">
+                            {isAlreadyPromoted ? (
+                              <span className="text-slate-400">Enrolled ({promoTargetYear})</span>
+                            ) : isPass ? (
+                              <span className="text-emerald-700 dark:text-emerald-300 font-bold">
+                                &rarr; {eligibility.targetClass}-{promoTargetDiv} ({promoTargetYear})
+                              </span>
+                            ) : (
+                              <span className="text-amber-700 dark:text-amber-300 font-bold">
+                                &rarr; {eligibility.targetClass}-{std.division_name || 'A'} ({promoTargetYear})
+                              </span>
+                            )}
+                          </td>
+                          <td className="py-3 text-right">
+                            <button
+                              type="button"
+                              disabled={isAlreadyPromoted || isPromoting}
+                              onClick={async () => {
+                                setIsPromoting(true);
+                                const res = await store.promoteStudent(std.id, promoTargetYear);
+                                setPromotionResult(res.message);
+                                setIsPromoting(false);
+                                setTimeout(() => setPromotionResult(null), 6000);
+                              }}
+                              className="px-2.5 py-1 rounded text-[11px] font-bold bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 disabled:opacity-40 transition-colors cursor-pointer"
+                            >
+                              {isAlreadyPromoted ? 'Enrolled' : isPass ? 'Promote' : 'Retain'}
+                            </button>
                           </td>
                         </tr>
                       );
@@ -582,21 +623,23 @@ export const ClassesPage: React.FC = () => {
                 disabled={selectedStudentIds.length === 0 || isPromoting}
                 onClick={async () => {
                   setIsPromoting(true);
-                  const count = await store.promoteStudents(
-                    promoSourceClass,
-                    promoTargetClass,
-                    promoTargetYear,
-                    selectedStudentIds,
-                    promoTargetDiv
+                  const res = await store.executeAutomaticStandardPromotion({
+                    sourceClass: promoSourceClass,
+                    studentIds: selectedStudentIds,
+                    targetYear: promoTargetYear,
+                    targetDivision: promoTargetDiv
+                  });
+                  setPromotionResult(
+                    `Automatic Promotion Completed: ${res.promoted_count} Promoted to next standard, ${res.retained_count || 0} Retained in current standard (${res.skipped_duplicates} duplicate enrollments prevented). All attendance and academic records preserved.`
                   );
-                  setPromotionResult(`Successfully promoted ${count} students to ${promoTargetClass}-${promoTargetDiv}!`);
                   setIsPromoting(false);
-                  setTimeout(() => setPromotionResult(null), 6000);
+                  setTimeout(() => setPromotionResult(null), 7000);
                 }}
-                className={`px-4 py-2 rounded-lg text-xs font-semibold text-white shadow-sm transition-colors cursor-pointer ${selectedStudentIds.length > 0 && !isPromoting
-                  ? 'bg-indigo-600 hover:bg-indigo-700'
-                  : 'bg-slate-300 dark:bg-slate-700 cursor-not-allowed text-slate-500'
-                  }`}
+                className={`px-4 py-2 rounded-lg text-xs font-semibold text-white shadow-sm transition-colors cursor-pointer ${
+                  selectedStudentIds.length > 0 && !isPromoting
+                    ? 'bg-indigo-600 hover:bg-indigo-700'
+                    : 'bg-slate-300 dark:bg-slate-700 cursor-not-allowed text-slate-500'
+                }`}
               >
                 {isPromoting ? t.loading : `${t.executeBulkPromoBtn} (${selectedStudentIds.length})`}
               </button>

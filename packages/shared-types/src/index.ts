@@ -709,13 +709,38 @@ export interface ClassEnrollment {
   is_active: boolean;
 }
 
+export interface StudentExamResult {
+  id: string;
+  student_id: string;
+  academic_year: string;
+  exam_name: string;
+  marks_obtained: number;
+  total_marks: number;
+  percentage: number;
+  result_status: 'PASS' | 'FAIL';
+  remarks?: string;
+  recorded_at: string;
+}
+
 export interface PromotionBatchResult {
   promoted_count: number;
+  retained_count?: number;
   skipped_duplicates: number;
   source_class: string;
   target_class: string;
   target_academic_year: string;
   promoted_students: string[];
+  retained_students?: string[];
+  details?: Array<{
+    student_id: string;
+    student_name: string;
+    action: 'PROMOTED' | 'RETAINED' | 'SKIPPED_DUPLICATE';
+    from_class: string;
+    to_class: string;
+    result_status: 'PASS' | 'FAIL';
+    percentage: number;
+    reason: string;
+  }>;
 }
 
 export type VisitorPurpose =
