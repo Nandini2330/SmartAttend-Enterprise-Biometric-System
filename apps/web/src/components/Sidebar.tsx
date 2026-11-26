@@ -465,7 +465,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Mobile Drawer (Slide in) */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-[#111827] border-r border-slate-200/90 dark:border-[#334155] shadow-2xl lg:hidden transform transition-transform duration-200 ease-in-out ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-white dark:bg-[#111827] border-r border-slate-200/90 dark:border-[#334155] shadow-2xl lg:hidden transform transition-transform duration-200 ease-in-out overflow-touch ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >

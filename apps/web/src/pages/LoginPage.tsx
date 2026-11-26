@@ -141,15 +141,15 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-h-screen w-full relative bg-gradient-to-br from-slate-100 via-blue-50/70 to-indigo-50/50 dark:from-[#0F172A] dark:via-[#111827] dark:to-[#0F172A] flex flex-col justify-center items-center p-4 md:p-8 font-sans">
+    <div className="min-h-screen w-full relative bg-gradient-to-br from-slate-100 via-blue-50/70 to-indigo-50/50 dark:from-[#0F172A] dark:via-[#111827] dark:to-[#0F172A] flex flex-col justify-center items-center px-4 py-16 sm:py-12 md:p-8 font-sans overflow-x-hidden">
       {/* Top Floating Controls (Language + Theme Switcher) */}
-      <div className="absolute top-4 right-4 md:top-6 md:right-8 z-30 flex items-center space-x-2.5">
+      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-8 z-30 flex items-center space-x-1.5 sm:space-x-2.5">
         {/* Language Switcher */}
-        <div className="flex items-center bg-white/90 dark:bg-[#1E293B] border border-slate-200 dark:border-[#334155] rounded-full p-1 shadow-sm backdrop-blur-md">
+        <div className="flex items-center bg-white/90 dark:bg-[#1E293B] border border-slate-200 dark:border-[#334155] rounded-full p-0.5 sm:p-1 shadow-sm backdrop-blur-md">
           <button
             type="button"
             onClick={() => setLanguage('en')}
-            className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
+            className={`px-2 sm:px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
               language === 'en'
                 ? 'bg-brand-600 text-white shadow-sm'
                 : 'text-slate-600 dark:text-[#CBD5E1] hover:text-slate-900 dark:hover:text-white'
@@ -160,7 +160,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           <button
             type="button"
             onClick={() => setLanguage('mr')}
-            className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
+            className={`px-2 sm:px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
               language === 'mr'
                 ? 'bg-brand-600 text-white shadow-sm'
                 : 'text-slate-600 dark:text-[#CBD5E1] hover:text-slate-900 dark:hover:text-white'
@@ -174,19 +174,19 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         <button
           type="button"
           onClick={() => store.toggleTheme()}
-          className="flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-[#1E293B] border border-slate-200 dark:border-[#334155] text-slate-700 dark:text-[#CBD5E1] shadow-sm hover:shadow backdrop-blur-md hover:bg-white dark:hover:bg-[#111827] transition-all text-xs font-semibold cursor-pointer"
+          className="flex items-center space-x-1.5 px-2.5 sm:px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-[#1E293B] border border-slate-200 dark:border-[#334155] text-slate-700 dark:text-[#CBD5E1] shadow-sm hover:shadow backdrop-blur-md hover:bg-white dark:hover:bg-[#111827] transition-all text-xs font-semibold cursor-pointer"
           title={store.theme === 'dark' ? t.lightMode : t.darkMode}
           aria-label="Toggle Theme"
         >
           {store.theme === 'dark' ? (
             <>
               <Sun className="w-3.5 h-3.5 text-amber-400" />
-              <span>{t.lightMode}</span>
+              <span className="hidden sm:inline">{t.lightMode}</span>
             </>
           ) : (
             <>
               <Moon className="w-3.5 h-3.5 text-slate-600" />
-              <span>{t.darkMode}</span>
+              <span className="hidden sm:inline">{t.darkMode}</span>
             </>
           )}
         </button>
@@ -392,7 +392,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       {/* Forgot Password Modal */}
       {showForgotModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-white dark:bg-[#1E293B] border border-slate-200 dark:border-[#334155] rounded-2xl max-w-sm w-full p-5 shadow-2xl">
+          <div className="bg-white dark:bg-[#1E293B] border border-slate-200 dark:border-[#334155] rounded-2xl max-w-sm w-full p-4 sm:p-5 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#334155] mb-3">
               <div className="flex items-center space-x-2 text-slate-900 dark:text-white font-bold text-sm">
                 <Info className="w-4 h-4 text-brand-600 dark:text-brand-400" />

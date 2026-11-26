@@ -311,7 +311,7 @@ export const TimetablePage: React.FC = () => {
       </div>
 
       {/* Timetable Weekly Grid View */}
-      <div className="card-enterprise p-5 bg-white dark:bg-[#0D1527] border border-slate-200/90 dark:border-slate-800/80 overflow-x-auto">
+      <div className="card-enterprise p-4 sm:p-5 bg-white dark:bg-[#0D1527] border border-slate-200/90 dark:border-slate-800/80 overflow-x-auto responsive-table-container">
         <div className="min-w-[850px]">
           {/* Day Columns Header */}
           <div className="grid grid-cols-6 gap-3 pb-3 border-b border-slate-200/80 dark:border-slate-800 text-center font-bold text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider">
@@ -463,7 +463,7 @@ export const TimetablePage: React.FC = () => {
       {/* Schedule / Edit Period Modal with Conflict Detection */}
       {showAddModal && (
         <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-[#0D1527] border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl animate-fade-in">
+          <div className="bg-white dark:bg-[#0D1527] border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-4 sm:p-6 shadow-2xl animate-fade-in max-h-[90vh] overflow-y-auto">
             <h2 className="text-base font-bold text-slate-900 dark:text-white mb-1">
               {editingSlot ? 'Edit Scheduled Period' : 'Schedule Timetable Period'}
             </h2>

@@ -96,10 +96,10 @@ export const SettingsPage: React.FC = () => {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex border-b border-slate-200 dark:border-slate-800 space-x-6">
+      <div className="flex border-b border-slate-200 dark:border-slate-800 space-x-4 sm:space-x-6 overflow-x-auto no-scrollbar whitespace-nowrap shrink-0">
         <button
           onClick={() => setActiveTab('POLICIES')}
-          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all ${activeTab === 'POLICIES'
+          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all shrink-0 cursor-pointer ${activeTab === 'POLICIES'
             ? 'border-brand-600 text-brand-600 dark:text-brand-400'
             : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
@@ -110,7 +110,7 @@ export const SettingsPage: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('HOLIDAYS')}
-          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all ${activeTab === 'HOLIDAYS'
+          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all shrink-0 cursor-pointer ${activeTab === 'HOLIDAYS'
             ? 'border-brand-600 text-brand-600 dark:text-brand-400'
             : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
@@ -124,7 +124,7 @@ export const SettingsPage: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('PROMOTIONS')}
-          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all ${activeTab === 'PROMOTIONS'
+          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all shrink-0 cursor-pointer ${activeTab === 'PROMOTIONS'
             ? 'border-brand-600 text-brand-600 dark:text-brand-400'
             : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
             }`}

@@ -250,10 +250,10 @@ export const LeavesPage: React.FC = () => {
       )}
 
       {/* Top Level Section Switcher */}
-      <div className="flex border-b border-slate-200 dark:border-slate-800 space-x-6">
+      <div className="flex border-b border-slate-200 dark:border-slate-800 space-x-4 sm:space-x-6 overflow-x-auto no-scrollbar whitespace-nowrap shrink-0">
         <button
           onClick={() => setPageSection('LEAVES')}
-          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all ${pageSection === 'LEAVES'
+          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all shrink-0 cursor-pointer ${pageSection === 'LEAVES'
             ? 'border-brand-600 text-brand-600 dark:text-brand-400'
             : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
@@ -267,7 +267,7 @@ export const LeavesPage: React.FC = () => {
 
         <button
           onClick={() => setPageSection('CORRECTIONS')}
-          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all ${pageSection === 'CORRECTIONS'
+          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all shrink-0 cursor-pointer ${pageSection === 'CORRECTIONS'
             ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400'
             : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
@@ -281,10 +281,10 @@ export const LeavesPage: React.FC = () => {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center space-x-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+      <div className="flex items-center space-x-2 border-b border-slate-200 dark:border-slate-800 pb-2 overflow-x-auto no-scrollbar whitespace-nowrap shrink-0">
         <button
           onClick={() => setFilter('ALL')}
-          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${filter === 'ALL'
+          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors shrink-0 cursor-pointer ${filter === 'ALL'
             ? 'bg-slate-900 dark:bg-brand-600 text-white'
             : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
             }`}
@@ -293,7 +293,7 @@ export const LeavesPage: React.FC = () => {
         </button>
         <button
           onClick={() => setFilter('PENDING')}
-          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${filter === 'PENDING'
+          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors shrink-0 cursor-pointer ${filter === 'PENDING'
             ? 'bg-slate-900 dark:bg-brand-600 text-white'
             : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
             }`}
@@ -302,7 +302,7 @@ export const LeavesPage: React.FC = () => {
         </button>
         <button
           onClick={() => setFilter('APPROVED')}
-          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${filter === 'APPROVED'
+          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors shrink-0 cursor-pointer ${filter === 'APPROVED'
             ? 'bg-slate-900 dark:bg-brand-600 text-white'
             : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
             }`}
@@ -311,7 +311,7 @@ export const LeavesPage: React.FC = () => {
         </button>
         <button
           onClick={() => setFilter('REJECTED')}
-          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${filter === 'REJECTED'
+          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors shrink-0 cursor-pointer ${filter === 'REJECTED'
             ? 'bg-slate-900 dark:bg-brand-600 text-white'
             : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
             }`}
@@ -569,7 +569,7 @@ export const LeavesPage: React.FC = () => {
       {/* New Correction Request Modal */}
       {showCorrectionModal && (
         <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-5 border-b border-slate-100 dark:border-slate-800">
               <div className="flex items-center space-x-2">
                 <Edit className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
@@ -661,7 +661,7 @@ export const LeavesPage: React.FC = () => {
       {/* Apply Leave Modal */}
       {showApplyModal && (
         <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-5 border-b border-slate-100 dark:border-slate-800">
               <div className="flex items-center space-x-2">
                 <Calendar className="w-5 h-5 text-brand-600 dark:text-brand-400" />

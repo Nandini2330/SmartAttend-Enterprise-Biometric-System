@@ -302,7 +302,7 @@ export const StudentsPage: React.FC = () => {
 
       {/* Student Directory Table */}
       <div className="card-enterprise overflow-hidden">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto responsive-table-container">
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-50 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200/80 dark:border-slate-800">
               <tr>
@@ -426,7 +426,7 @@ export const StudentsPage: React.FC = () => {
       {/* Bulk CSV Import Modal */}
       {showBulkModal && (
         <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-xl w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-xl w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden max-h-[90vh] overflow-y-auto">
             <div className="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <FileText className="w-5 h-5 text-brand-600 dark:text-brand-400" />
@@ -588,7 +588,7 @@ export const StudentsPage: React.FC = () => {
       {/* Add Student Modal */}
       {showAddModal && (
         <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] overflow-y-auto">
             <div className="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <h2 className="text-sm font-bold text-slate-900 dark:text-white">Enroll New Student</h2>
               <button

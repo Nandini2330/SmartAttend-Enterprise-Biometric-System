@@ -31,9 +31,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearch, onOpenMobileMenu }) =>
   const userNotifications = store.getNotificationsForUser();
 
   return (
-    <header className="h-16 bg-white dark:bg-[#0F172A] border-b border-slate-200/90 dark:border-[#334155] px-4 sm:px-6 flex items-center justify-between sticky top-0 z-20">
+    <header className="h-16 bg-white dark:bg-[#0F172A] border-b border-slate-200/90 dark:border-[#334155] px-3 sm:px-6 flex items-center justify-between sticky top-0 z-20">
       {/* Left: Mobile Hamburger, School Badge & Quick Search */}
-      <div className="flex items-center space-x-3 sm:space-x-4 flex-1 max-w-2xl min-w-0">
+      <div className="flex items-center space-x-2 sm:space-x-4 flex-1 max-w-2xl min-w-0">
         {/* Mobile menu trigger */}
         <button
           type="button"
@@ -57,36 +57,36 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearch, onOpenMobileMenu }) =>
 
         {/* Parent Registered Child Badge OR Search Bar */}
         {isParent && activeChild ? (
-          <div className="flex items-center space-x-2 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/80 dark:border-emerald-800/80 rounded-lg px-3 py-1 text-xs truncate">
+          <div className="flex items-center space-x-1.5 sm:space-x-2 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/80 dark:border-emerald-800/80 rounded-lg px-2 sm:px-3 py-1 text-xs truncate max-w-[220px] sm:max-w-none">
             <Lock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <span className="text-slate-600 dark:text-slate-400 hidden md:inline">{t.childLabel}</span>
-            <strong className="text-emerald-950 dark:text-emerald-200 font-bold truncate">
-              {activeChild.first_name} {activeChild.last_name}
+            <strong className="text-emerald-950 dark:text-emerald-200 font-bold truncate text-[11px] sm:text-xs">
+              {activeChild.first_name} <span className="hidden sm:inline">{activeChild.last_name}</span>
             </strong>
-            <span className="font-mono text-emerald-800 dark:text-emerald-300 font-semibold text-[11px]">
+            <span className="font-mono text-emerald-800 dark:text-emerald-300 font-semibold text-[10px] sm:text-[11px] shrink-0">
               {activeChild.class_name}-{activeChild.division_name}
             </span>
             {childMetrics && (
-              <span className="bg-emerald-600 text-white font-extrabold text-[10px] px-1.5 py-0.2 rounded ml-1">
+              <span className="bg-emerald-600 text-white font-extrabold text-[10px] px-1.5 py-0.2 rounded ml-0.5 sm:ml-1 shrink-0">
                 {childMetrics.percentage}%
               </span>
             )}
           </div>
         ) : (
-          <div className="relative flex-1 max-w-md">
-            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <div className="relative flex-1 max-w-md min-w-0">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder={t.searchNavbarPlaceholder}
               onChange={(e) => onSearch && onSearch(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-200 dark:border-[#334155] rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-800 dark:text-[#F8FAFC] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all"
+              className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-200 dark:border-[#334155] rounded-lg pl-7 sm:pl-8 pr-2.5 sm:pr-3 py-1.5 text-xs text-slate-800 dark:text-[#F8FAFC] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all truncate"
             />
           </div>
         )}
       </div>
 
       {/* Right: Theme Toggle, Language Switcher, Notifications */}
-      <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
+      <div className="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
         {/* Theme Toggle (Light / Dark) */}
         <button
           type="button"
@@ -107,7 +107,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearch, onOpenMobileMenu }) =>
           <button
             type="button"
             onClick={() => setLanguage('en')}
-            className={`px-2 py-1 rounded transition-all text-[11px] ${
+            className={`px-1.5 sm:px-2 py-1 rounded transition-all text-[11px] ${
               language === 'en'
                 ? 'bg-white dark:bg-[#111827] text-brand-600 dark:text-[#3B82F6] shadow-sm font-bold'
                 : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
@@ -119,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearch, onOpenMobileMenu }) =>
           <button
             type="button"
             onClick={() => setLanguage('mr')}
-            className={`px-2 py-1 rounded transition-all text-[11px] ${
+            className={`px-1.5 sm:px-2 py-1 rounded transition-all text-[11px] ${
               language === 'mr'
                 ? 'bg-white dark:bg-[#111827] text-brand-600 dark:text-[#3B82F6] shadow-sm font-bold'
                 : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
@@ -148,7 +148,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearch, onOpenMobileMenu }) =>
             </button>
 
             {showNotifications && (
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white dark:bg-[#1E293B] border border-slate-200 dark:border-[#334155] rounded-xl shadow-2xl p-3 z-50">
+              <div className="fixed sm:absolute left-3 right-3 sm:left-auto sm:right-0 mt-2 sm:w-96 max-w-sm bg-white dark:bg-[#1E293B] border border-slate-200 dark:border-[#334155] rounded-xl shadow-2xl p-3 z-50">
                 <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-[#334155] mb-2">
                   <div className="flex items-center space-x-2">
                     <span className="font-bold text-xs text-slate-900 dark:text-[#F8FAFC]">

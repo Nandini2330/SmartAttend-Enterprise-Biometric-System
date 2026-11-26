@@ -324,7 +324,7 @@ export const HistoryPage: React.FC = () => {
 
             {/* Child Selector Pills if Parent Has Multiple Registered Children */}
             {authorizedStudents.length > 1 && (
-              <div className="flex items-center space-x-2 bg-navy-950/60 p-1.5 rounded-xl border border-navy-700">
+              <div className="flex flex-wrap items-center gap-1.5 bg-navy-950/60 p-1.5 rounded-xl border border-navy-700">
                 <span className="text-[11px] text-slate-400 px-2 font-medium">{t.switchChildLabel}</span>
                 {authorizedStudents.map((child) => (
                   <button
@@ -392,11 +392,11 @@ export const HistoryPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-2 shrink-0">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
               <select
                 value={tamperTargetId}
                 onChange={(e) => setTamperTargetId(e.target.value)}
-                className="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-200 font-medium focus:outline-none"
+                className="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-200 font-medium focus:outline-none"
               >
                 {store.students
                   .filter((s) => !authorizedStudents.some((a) => a.id === s.id))
@@ -410,9 +410,9 @@ export const HistoryPage: React.FC = () => {
               <button
                 onClick={handleTamperTest}
                 disabled={isTestingTamper}
-                className="px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white text-xs font-semibold shadow-sm transition-all flex items-center space-x-1.5 border border-transparent dark:border-slate-700"
+                className="w-full sm:w-auto justify-center px-3 py-1.5 rounded-lg bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white text-xs font-semibold shadow-sm transition-all flex items-center space-x-1.5 border border-transparent dark:border-slate-700 cursor-pointer"
               >
-                <Lock className="w-3.5 h-3.5 text-amber-300" />
+                <Lock className="w-3.5 h-3.5 text-amber-300 shrink-0" />
                 <span>{isTestingTamper ? t.testingPrivacy : t.testPrivacyBlockBtn}</span>
               </button>
             </div>
@@ -444,9 +444,9 @@ export const HistoryPage: React.FC = () => {
       )}
 
       {/* Filter Toolbar */}
-      <div className="card-enterprise p-4 flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-slate-900">
-        <div className="flex items-center space-x-3 flex-1 min-w-[280px]">
-          <div className="relative flex-1">
+      <div className="card-enterprise p-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white dark:bg-slate-900">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 flex-1 min-w-0">
+          <div className="relative flex-1 min-w-0">
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
@@ -457,8 +457,8 @@ export const HistoryPage: React.FC = () => {
             />
           </div>
 
-          <div className="flex items-center space-x-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-200">
-            <Calendar className="w-3.5 h-3.5 text-slate-400" />
+          <div className="flex items-center space-x-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-200 shrink-0">
+            <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
             <input
               type="date"
               value={selectedDate}
@@ -468,7 +468,7 @@ export const HistoryPage: React.FC = () => {
             {selectedDate && (
               <button
                 onClick={() => setSelectedDate('')}
-                className="text-[10px] text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 font-bold ml-1"
+                className="text-[10px] text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 font-bold ml-1 cursor-pointer"
                 title="Clear date filter"
               >
                 ✕
@@ -477,12 +477,12 @@ export const HistoryPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 shrink-0">
           <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{t.status}:</span>
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-700 dark:text-slate-200 font-medium focus:outline-none"
+            className="w-full sm:w-auto bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-700 dark:text-slate-200 font-medium focus:outline-none"
           >
             <option value="ALL">{t.allStatusesOption}</option>
             <option value="PRESENT">{t.present}</option>
@@ -495,7 +495,7 @@ export const HistoryPage: React.FC = () => {
 
       {/* Reconciled Records Table */}
       <div className="card-enterprise overflow-hidden">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto responsive-table-container">
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-50 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200/80 dark:border-slate-800">
               <tr>
@@ -580,7 +580,7 @@ export const HistoryPage: React.FC = () => {
       {/* Manual Attendance & Override Modal */}
       {showManualModal && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 max-w-md w-full p-6 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 max-w-md w-full p-4 sm:p-6 max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-150">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <div className="flex items-center space-x-2">
                 <UserCheck className="w-5 h-5 text-brand-600 dark:text-brand-400" />
@@ -745,7 +745,7 @@ export const HistoryPage: React.FC = () => {
 
       {feedbackToast && (
         <div
-          className={`fixed bottom-6 right-6 z-50 p-4 rounded-xl text-white text-xs font-bold shadow-2xl flex items-center space-x-2 animate-in slide-in-from-bottom-5 border ${feedbackToast.isError
+          className={`fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-md z-50 p-3 sm:p-4 rounded-xl text-white text-xs font-bold shadow-2xl flex items-center space-x-2 animate-in slide-in-from-bottom-5 border ${feedbackToast.isError
               ? 'bg-rose-600 border-rose-500'
               : feedbackToast.isWarning
                 ? 'bg-amber-600 border-amber-500'

@@ -380,12 +380,12 @@ export const VisitorPickupPage: React.FC = () => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700">
+        <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 w-full sm:w-auto overflow-x-auto no-scrollbar shrink-0">
           <button
             type="button"
             id="tab-student-pickup"
             onClick={() => setActiveSection('STUDENT_PICKUP')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${activeSection === 'STUDENT_PICKUP'
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${activeSection === 'STUDENT_PICKUP'
                 ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
               }`}
@@ -398,7 +398,7 @@ export const VisitorPickupPage: React.FC = () => {
             type="button"
             id="tab-campus-visitors"
             onClick={() => setActiveSection('CAMPUS_VISITORS')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${activeSection === 'CAMPUS_VISITORS'
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${activeSection === 'CAMPUS_VISITORS'
                 ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
               }`}
@@ -411,7 +411,7 @@ export const VisitorPickupPage: React.FC = () => {
             type="button"
             id="tab-pre-authorized"
             onClick={() => setActiveSection('PRE_AUTHORIZED')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${activeSection === 'PRE_AUTHORIZED'
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${activeSection === 'PRE_AUTHORIZED'
                 ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
               }`}

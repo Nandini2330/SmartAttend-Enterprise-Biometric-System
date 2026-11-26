@@ -40,7 +40,7 @@ export const ReconciliationPage: React.FC = () => {
         <button
           onClick={handleExecuteReconciliation}
           disabled={running}
-          className="flex items-center space-x-2 px-4 py-2.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold shadow-md transition-all disabled:opacity-50"
+          className="flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold shadow-md transition-all disabled:opacity-50 w-full sm:w-auto"
         >
           <RotateCw className={`w-4 h-4 ${running ? 'animate-spin' : ''}`} />
           <span>{running ? t.reconcilingDb : t.runCutoffBtn}</span>
@@ -93,7 +93,7 @@ export const ReconciliationPage: React.FC = () => {
           </span>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto responsive-table-container">
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-50 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200/80 dark:border-slate-800">
               <tr>

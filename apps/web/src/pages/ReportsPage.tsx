@@ -901,7 +901,7 @@ export const ReportsPage: React.FC = () => {
 
         {/* Printable Official Statement Section */}
         <div className="card-enterprise p-6 bg-white dark:bg-[#0D1527] border border-slate-200/90 dark:border-slate-800/80">
-          <div className="border-b border-slate-200 dark:border-slate-800 pb-4 mb-4 flex items-center justify-between">
+          <div className="border-b border-slate-200 dark:border-slate-800 pb-4 mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-lg bg-brand-600 text-white flex items-center justify-center font-bold">
                 <School className="w-5 h-5 text-white" />
@@ -978,11 +978,11 @@ export const ReportsPage: React.FC = () => {
           </div>
 
           {/* Sub-View Tabs */}
-          <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold shrink-0">
+          <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold w-full sm:w-auto overflow-x-auto no-scrollbar shrink-0">
             <button
               type="button"
               onClick={() => setActiveViewTab('GENERATOR')}
-              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg transition-all ${activeViewTab === 'GENERATOR'
+              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg transition-all shrink-0 cursor-pointer ${activeViewTab === 'GENERATOR'
                 ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm font-extrabold'
                 : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
                 }`}
@@ -993,7 +993,7 @@ export const ReportsPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveViewTab('ANALYTICS')}
-              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg transition-all ${activeViewTab === 'ANALYTICS'
+              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg transition-all shrink-0 cursor-pointer ${activeViewTab === 'ANALYTICS'
                 ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm font-extrabold'
                 : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
                 }`}
@@ -1004,7 +1004,7 @@ export const ReportsPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveViewTab('HISTORY')}
-              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg transition-all ${activeViewTab === 'HISTORY'
+              className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg transition-all shrink-0 cursor-pointer ${activeViewTab === 'HISTORY'
                 ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm font-extrabold'
                 : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
                 }`}

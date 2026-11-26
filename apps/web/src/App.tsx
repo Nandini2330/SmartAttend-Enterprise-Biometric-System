@@ -152,9 +152,9 @@ export function App() {
             onOpenMobileMenu={() => setMobileMenuOpen(true)}
           />
 
-          {/* Scrollable Page Body */}
-          <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-900 dark:text-[#F8FAFC]">
-            <div className="max-w-7xl mx-auto space-y-6">
+          {/* Scrollable Page Body with Responsive Padding & Zero Horizontal Overflow */}
+          <main className="flex-1 overflow-y-auto overflow-x-hidden p-3 sm:p-5 lg:p-8 bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-900 dark:text-[#F8FAFC] overflow-touch">
+            <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6 w-full">
               {renderContent()}
             </div>
           </main>

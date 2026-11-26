@@ -103,10 +103,10 @@ export const ClassesPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-slate-200 dark:border-slate-800 space-x-6">
+      <div className="flex border-b border-slate-200 dark:border-slate-800 space-x-4 sm:space-x-6 overflow-x-auto no-scrollbar whitespace-nowrap shrink-0">
         <button
           onClick={() => setActiveTab('SECTIONS')}
-          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all ${activeTab === 'SECTIONS'
+          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all shrink-0 cursor-pointer ${activeTab === 'SECTIONS'
             ? 'border-brand-600 text-brand-600 dark:text-brand-400'
             : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
@@ -117,7 +117,7 @@ export const ClassesPage: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('TIMETABLE')}
-          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all ${activeTab === 'TIMETABLE'
+          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all shrink-0 cursor-pointer ${activeTab === 'TIMETABLE'
             ? 'border-brand-600 text-brand-600 dark:text-brand-400'
             : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
@@ -128,7 +128,7 @@ export const ClassesPage: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('SUBJECT_ATTENDANCE')}
-          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all ${activeTab === 'SUBJECT_ATTENDANCE'
+          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all shrink-0 cursor-pointer ${activeTab === 'SUBJECT_ATTENDANCE'
             ? 'border-brand-600 text-brand-600 dark:text-brand-400'
             : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
@@ -144,7 +144,7 @@ export const ClassesPage: React.FC = () => {
             const eligible = store.students.filter((s) => s.class_name === promoSourceClass).map((s) => s.id);
             setSelectedStudentIds(eligible);
           }}
-          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all ${activeTab === 'PROMOTION'
+          className={`pb-3 text-xs font-bold border-b-2 flex items-center space-x-2 transition-all shrink-0 cursor-pointer ${activeTab === 'PROMOTION'
             ? 'border-indigo-600 text-indigo-600 dark:text-indigo-400'
             : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
@@ -708,7 +708,7 @@ export const ClassesPage: React.FC = () => {
           {/* Modal: Add New Academic Session */}
           {showAddYearModal && (
             <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-              <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-sm w-full shadow-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-4">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-sm w-full shadow-2xl border border-slate-200 dark:border-slate-800 p-4 sm:p-5 space-y-4 max-h-[90vh] overflow-y-auto">
                 <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
                   <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-indigo-600" />

@@ -196,23 +196,23 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Quick Operations Trigger Toolbar */}
-          <div className="flex items-center gap-2.5 shrink-0 pt-2 lg:pt-0">
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 w-full sm:w-auto shrink-0 pt-2 lg:pt-0">
             <button
               onClick={handleQuickPunch}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white text-xs font-semibold shadow-sm shadow-brand-600/20 transition-all cursor-pointer"
+              className="inline-flex items-center justify-center space-x-1.5 px-3.5 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white text-xs font-semibold shadow-sm shadow-brand-600/20 transition-all cursor-pointer flex-1 sm:flex-none"
               title={t.simulatePunchBtn}
             >
-              <Zap className="w-3.5 h-3.5 text-amber-300" />
-              <span>{t.simulatePunchBtn}</span>
+              <Zap className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+              <span className="truncate">{t.simulatePunchBtn}</span>
             </button>
 
             <button
               onClick={handleQuickReconcile}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 active:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/90 dark:border-slate-700 text-xs font-semibold shadow-sm transition-all cursor-pointer"
+              className="inline-flex items-center justify-center space-x-1.5 px-3.5 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 active:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/90 dark:border-slate-700 text-xs font-semibold shadow-sm transition-all cursor-pointer flex-1 sm:flex-none"
               title={t.runReconciliationBtn}
             >
-              <RotateCw className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
-              <span>{t.runReconciliationBtn}</span>
+              <RotateCw className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 shrink-0" />
+              <span className="truncate">{t.runReconciliationBtn}</span>
             </button>
           </div>
         </div>

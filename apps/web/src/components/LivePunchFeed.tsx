@@ -46,18 +46,18 @@ export const LivePunchFeed: React.FC<LivePunchFeedProps> = ({ events, maxItems =
         </div>
       ) : (
         displayEvents.map((evt) => (
-          <div key={evt.id} className="py-3 px-1 flex items-center justify-between hover:bg-slate-50/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors">
-            <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center border border-slate-200/80 dark:border-slate-700 shrink-0">
+          <div key={evt.id} className="py-3 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 hover:bg-slate-50/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors">
+            <div className="flex items-start sm:items-center space-x-3 min-w-0">
+              <div className="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center border border-slate-200/80 dark:border-slate-700 shrink-0 mt-0.5 sm:mt-0">
                 {getMethodIcon(evt.verification_method)}
               </div>
-              <div>
-                <div className="flex items-center space-x-2">
-                  <span className="font-semibold text-xs text-slate-900 dark:text-white">{evt.student_name || 'Enrolled Student'}</span>
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="font-semibold text-xs text-slate-900 dark:text-white truncate">{evt.student_name || 'Enrolled Student'}</span>
                   <span className="text-[11px] text-slate-400 font-mono">({evt.admission_number})</span>
                   {getMethodBadge(evt.verification_method)}
                 </div>
-                <div className="flex items-center space-x-2 text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                   <span>Class {evt.class_division || '10-A'}</span>
                   <span>•</span>
                   <span>{evt.device_name || 'Terminal Gate'}</span>
@@ -73,7 +73,7 @@ export const LivePunchFeed: React.FC<LivePunchFeedProps> = ({ events, maxItems =
               </div>
             </div>
 
-            <div className="flex items-center space-x-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">
+            <div className="self-end sm:self-auto flex items-center space-x-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded shrink-0">
               <Clock className="w-3 h-3 text-slate-400" />
               <span>{evt.local_timestamp}</span>
             </div>

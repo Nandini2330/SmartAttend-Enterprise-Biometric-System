@@ -155,7 +155,7 @@ export const CalendarPage: React.FC = () => {
       )}
 
       {/* Calendar Navigation Bar */}
-      <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">
+      <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <button
             onClick={handlePrevMonth}
@@ -175,7 +175,7 @@ export const CalendarPage: React.FC = () => {
         </div>
 
         {/* Legend */}
-        <div className="flex flex-wrap items-center gap-3 text-xs">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
           <span className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
             <span className="text-slate-600 dark:text-slate-400">{t.holiday}</span>
@@ -196,9 +196,9 @@ export const CalendarPage: React.FC = () => {
       </div>
 
       {/* Calendar Grid */}
-      <div className="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+      <div className="p-3 sm:p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
         {/* Days of week header */}
-        <div className="grid grid-cols-7 gap-2 pb-3 border-b border-slate-100 dark:border-slate-800 text-center font-semibold text-xs text-slate-400 uppercase">
+        <div className="grid grid-cols-7 gap-1 sm:gap-2 pb-3 border-b border-slate-100 dark:border-slate-800 text-center font-semibold text-xs text-slate-400 uppercase">
           <div>{t.daySun}</div>
           <div>{t.dayMon}</div>
           <div>{t.dayTue}</div>
@@ -209,10 +209,10 @@ export const CalendarPage: React.FC = () => {
         </div>
 
         {/* Days cells */}
-        <div className="grid grid-cols-7 gap-2 pt-3">
+        <div className="grid grid-cols-7 gap-1 sm:gap-2 pt-3">
           {calendarDays.map((day, idx) => {
             if (day === null) {
-              return <div key={`empty-${idx}`} className="h-28 rounded-lg bg-slate-50/40 dark:bg-slate-800/20" />;
+              return <div key={`empty-${idx}`} className="min-h-[58px] sm:h-28 rounded-lg bg-slate-50/40 dark:bg-slate-800/20" />;
             }
 
             const events = getEventsForDate(day);
@@ -224,24 +224,25 @@ export const CalendarPage: React.FC = () => {
             return (
               <div
                 key={`day-${day}`}
-                className={`h-28 p-2 rounded-lg border flex flex-col justify-between transition-colors ${
-                  isToday
+                className={`min-h-[58px] sm:h-28 p-1 sm:p-2 rounded-lg border flex flex-col justify-between transition-colors ${isToday
                     ? 'border-indigo-400 bg-indigo-50/20 dark:bg-indigo-950/20'
                     : 'border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/60'
-                }`}
+                  }`}
               >
                 <div className="flex items-center justify-between">
                   <span
-                    className={`text-xs font-bold ${
-                      isToday
+                    className={`text-xs font-bold ${isToday
                         ? 'flex h-5 w-5 items-center justify-center rounded-full bg-indigo-600 text-white text-[11px]'
                         : 'text-slate-700 dark:text-slate-300'
-                    }`}
+                      }`}
                   >
                     {day}
                   </span>
                   {events.length > 0 && (
-                    <span className="text-[10px] font-mono text-slate-400">{events.length} evt</span>
+                    <span className="text-[9px] sm:text-[10px] font-mono text-slate-400">
+                      <span className="hidden sm:inline">{events.length} evt</span>
+                      <span className="sm:hidden w-1.5 h-1.5 rounded-full bg-indigo-500 inline-block"></span>
+                    </span>
                   )}
                 </div>
 
@@ -251,18 +252,19 @@ export const CalendarPage: React.FC = () => {
                       evt.event_type === 'HOLIDAY'
                         ? 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300 border-rose-200'
                         : evt.event_type === 'EXAMINATION'
-                        ? 'bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300 border-purple-200'
-                        : evt.event_type === 'VACATION'
-                        ? 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border-blue-200'
-                        : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200';
+                          ? 'bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300 border-purple-200'
+                          : evt.event_type === 'VACATION'
+                            ? 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border-blue-200'
+                            : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200';
 
                     return (
                       <div
                         key={evt.id}
-                        className={`text-[10px] p-1 rounded font-medium truncate border ${badgeColor}`}
+                        className={`text-[9px] sm:text-[10px] p-0.5 sm:p-1 rounded font-medium truncate border ${badgeColor}`}
                         title={`${evt.title}: ${evt.description || ''}`}
                       >
-                        {evt.title}
+                        <span className="hidden sm:inline">{evt.title}</span>
+                        <span className="sm:hidden text-[8px] font-bold">●</span>
                       </div>
                     );
                   })}
@@ -286,15 +288,14 @@ export const CalendarPage: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-slate-900 dark:text-white">{evt.title}</span>
                   <span
-                    className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                      evt.event_type === 'HOLIDAY'
+                    className={`px-2 py-0.5 rounded text-[10px] font-bold ${evt.event_type === 'HOLIDAY'
                         ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'
                         : evt.event_type === 'EXAMINATION'
-                        ? 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300'
-                        : evt.event_type === 'VACATION'
-                        ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300'
-                        : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                    }`}
+                          ? 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300'
+                          : evt.event_type === 'VACATION'
+                            ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300'
+                            : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                      }`}
                   >
                     {evt.event_type}
                   </span>
@@ -322,7 +323,7 @@ export const CalendarPage: React.FC = () => {
       {/* Add Event Modal */}
       {showAddModal && (
         <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-xl">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-4 sm:p-6 shadow-xl max-h-[90vh] overflow-y-auto">
             <h2 className="text-base font-bold text-slate-900 dark:text-white mb-1">Add School Calendar Event</h2>
             <p className="text-xs text-slate-500 mb-4">
               Create holidays, exam schedules, vacations, or working day exceptions.
