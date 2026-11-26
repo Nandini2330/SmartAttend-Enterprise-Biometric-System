@@ -635,11 +635,10 @@ export const ClassesPage: React.FC = () => {
                   setIsPromoting(false);
                   setTimeout(() => setPromotionResult(null), 7000);
                 }}
-                className={`px-4 py-2 rounded-lg text-xs font-semibold text-white shadow-sm transition-colors cursor-pointer ${
-                  selectedStudentIds.length > 0 && !isPromoting
+                className={`px-4 py-2 rounded-lg text-xs font-semibold text-white shadow-sm transition-colors cursor-pointer ${selectedStudentIds.length > 0 && !isPromoting
                     ? 'bg-indigo-600 hover:bg-indigo-700'
                     : 'bg-slate-300 dark:bg-slate-700 cursor-not-allowed text-slate-500'
-                }`}
+                  }`}
               >
                 {isPromoting ? t.loading : `${t.executeBulkPromoBtn} (${selectedStudentIds.length})`}
               </button>

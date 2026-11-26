@@ -285,11 +285,10 @@ export const StudentsPage: React.FC = () => {
       {/* Division Reassignment Status Feedback */}
       {divisionUpdateMsg && (
         <div
-          className={`p-3 rounded-xl border text-xs font-semibold flex items-center space-x-2 transition-all ${
-            divisionUpdateMsg.type === 'success'
+          className={`p-3 rounded-xl border text-xs font-semibold flex items-center space-x-2 transition-all ${divisionUpdateMsg.type === 'success'
               ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200 border-emerald-200 dark:border-emerald-800'
               : 'bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-200 border-rose-200 dark:border-rose-800'
-          }`}
+            }`}
         >
           {divisionUpdateMsg.type === 'success' ? (
             <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />

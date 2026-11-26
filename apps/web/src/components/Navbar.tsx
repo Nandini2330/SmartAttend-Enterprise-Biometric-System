@@ -107,11 +107,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearch, onOpenMobileMenu }) =>
           <button
             type="button"
             onClick={() => setLanguage('en')}
-            className={`px-1.5 sm:px-2 py-1 rounded transition-all text-[11px] ${
-              language === 'en'
+            className={`px-1.5 sm:px-2 py-1 rounded transition-all text-[11px] ${language === 'en'
                 ? 'bg-white dark:bg-[#111827] text-brand-600 dark:text-[#3B82F6] shadow-sm font-bold'
                 : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
-            }`}
+              }`}
             title="English"
           >
             EN
@@ -119,11 +118,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearch, onOpenMobileMenu }) =>
           <button
             type="button"
             onClick={() => setLanguage('mr')}
-            className={`px-1.5 sm:px-2 py-1 rounded transition-all text-[11px] ${
-              language === 'mr'
+            className={`px-1.5 sm:px-2 py-1 rounded transition-all text-[11px] ${language === 'mr'
                 ? 'bg-white dark:bg-[#111827] text-brand-600 dark:text-[#3B82F6] shadow-sm font-bold'
                 : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
-            }`}
+              }`}
             title="मराठी"
           >
             मराठी
@@ -193,11 +191,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearch, onOpenMobileMenu }) =>
                         <div
                           key={n.id}
                           onClick={() => store.markNotificationAsRead(n.id)}
-                          className={`p-2.5 rounded-lg text-xs border transition-all cursor-pointer ${
-                            isUnread
+                          className={`p-2.5 rounded-lg text-xs border transition-all cursor-pointer ${isUnread
                               ? 'bg-blue-50/70 dark:bg-blue-950/30 border-blue-200 dark:border-blue-900/60 shadow-xs'
                               : 'bg-slate-50 dark:bg-[#111827] border-slate-100 dark:border-[#334155] opacity-80 hover:opacity-100'
-                          }`}
+                            }`}
                         >
                           <div className="flex items-start justify-between gap-1">
                             <div className="flex items-center space-x-1.5 min-w-0">
@@ -209,13 +206,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearch, onOpenMobileMenu }) =>
                               </span>
                             </div>
                             <div className="flex items-center space-x-1 shrink-0">
-                              <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded font-mono ${
-                                n.notification_type === 'ARRIVAL'
+                              <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded font-mono ${n.notification_type === 'ARRIVAL'
                                   ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
                                   : n.notification_type === 'ABSENCE'
-                                  ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'
-                                  : 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
-                              }`}>
+                                    ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'
+                                    : 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
+                                }`}>
                                 {n.notification_type}
                               </span>
                               <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-mono font-semibold">

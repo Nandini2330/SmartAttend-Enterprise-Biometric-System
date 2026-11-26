@@ -386,8 +386,8 @@ export const VisitorPickupPage: React.FC = () => {
             id="tab-student-pickup"
             onClick={() => setActiveSection('STUDENT_PICKUP')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${activeSection === 'STUDENT_PICKUP'
-                ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+              ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
               }`}
           >
             <UserCheck className="w-3.5 h-3.5" />
@@ -399,8 +399,8 @@ export const VisitorPickupPage: React.FC = () => {
             id="tab-campus-visitors"
             onClick={() => setActiveSection('CAMPUS_VISITORS')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${activeSection === 'CAMPUS_VISITORS'
-                ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+              ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
               }`}
           >
             <Users className="w-3.5 h-3.5" />
@@ -412,8 +412,8 @@ export const VisitorPickupPage: React.FC = () => {
             id="tab-pre-authorized"
             onClick={() => setActiveSection('PRE_AUTHORIZED')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${activeSection === 'PRE_AUTHORIZED'
-                ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+              ? 'bg-white dark:bg-slate-900 text-brand-600 dark:text-brand-400 shadow-sm'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
               }`}
           >
             <ShieldCheck className="w-3.5 h-3.5" />
@@ -426,8 +426,8 @@ export const VisitorPickupPage: React.FC = () => {
       {feedback && (
         <div
           className={`p-4 rounded-xl text-xs font-semibold flex items-center justify-between border ${feedback.type === 'success'
-              ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
-              : 'bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-300 border-rose-200 dark:border-rose-800'
+            ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+            : 'bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-300 border-rose-200 dark:border-rose-800'
             }`}
         >
           <div className="flex items-center space-x-2">
@@ -488,8 +488,8 @@ export const VisitorPickupPage: React.FC = () => {
                         setFeedback(null);
                       }}
                       className={`p-3 rounded-xl border cursor-pointer transition-all ${isSelected
-                          ? 'bg-brand-50/70 dark:bg-brand-950/60 border-brand-500 shadow-sm'
-                          : 'bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
+                        ? 'bg-brand-50/70 dark:bg-brand-950/60 border-brand-500 shadow-sm'
+                        : 'bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                         }`}
                       id={`student-card-${std.admission_number}`}
                       data-testid="student-card"
@@ -682,8 +682,8 @@ export const VisitorPickupPage: React.FC = () => {
                                   onClick={handleVerifyOtp}
                                   disabled={enteredOtp.length !== 6}
                                   className={`px-4 py-2 rounded-lg text-xs font-bold text-white shadow-md transition-all cursor-pointer ${enteredOtp.length === 6
-                                      ? 'bg-emerald-600 hover:bg-emerald-700'
-                                      : 'bg-slate-300 dark:bg-slate-700 cursor-not-allowed text-slate-500'
+                                    ? 'bg-emerald-600 hover:bg-emerald-700'
+                                    : 'bg-slate-300 dark:bg-slate-700 cursor-not-allowed text-slate-500'
                                     }`}
                                 >
                                   Verify & Issue Exit Pass
@@ -750,8 +750,8 @@ export const VisitorPickupPage: React.FC = () => {
                       <td className="py-3 px-4">
                         <span
                           className={`px-2 py-0.5 rounded text-[10px] font-bold border ${log.status === 'PASS_ISSUED'
-                              ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
-                              : 'bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800'
+                            ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                            : 'bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800'
                             }`}
                         >
                           {log.status === 'PASS_ISSUED' ? t.approved : t.rejected}
@@ -820,8 +820,8 @@ export const VisitorPickupPage: React.FC = () => {
                     type="button"
                     onClick={() => setVisitorFilter('ALL')}
                     className={`px-2.5 py-1 rounded-md font-medium ${visitorFilter === 'ALL'
-                        ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
-                        : 'text-slate-500'
+                      ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
+                      : 'text-slate-500'
                       }`}
                   >
                     All ({store.schoolVisitors.length})
@@ -830,8 +830,8 @@ export const VisitorPickupPage: React.FC = () => {
                     type="button"
                     onClick={() => setVisitorFilter('CHECKED_IN')}
                     className={`px-2.5 py-1 rounded-md font-medium ${visitorFilter === 'CHECKED_IN'
-                        ? 'bg-emerald-600 text-white shadow-xs'
-                        : 'text-slate-500'
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'text-slate-500'
                       }`}
                   >
                     Active ({checkedInCount})
@@ -840,8 +840,8 @@ export const VisitorPickupPage: React.FC = () => {
                     type="button"
                     onClick={() => setVisitorFilter('CHECKED_OUT')}
                     className={`px-2.5 py-1 rounded-md font-medium ${visitorFilter === 'CHECKED_OUT'
-                        ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
-                        : 'text-slate-500'
+                      ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
+                      : 'text-slate-500'
                       }`}
                   >
                     Checked Out
@@ -896,8 +896,8 @@ export const VisitorPickupPage: React.FC = () => {
                       <td className="py-3 px-4">
                         <span
                           className={`px-2 py-0.5 rounded text-[10px] font-bold border ${vis.status === 'CHECKED_IN'
-                              ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200'
-                              : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200'
+                            ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200'
+                            : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200'
                             }`}
                         >
                           {vis.status === 'CHECKED_IN' ? 'ACTIVE ON CAMPUS' : 'CHECKED OUT'}
@@ -998,8 +998,8 @@ export const VisitorPickupPage: React.FC = () => {
                         <td className="py-3 px-4">
                           <span
                             className={`px-2 py-0.5 rounded text-[10px] font-bold border ${auth.is_active
-                                ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                                : 'bg-slate-100 text-slate-500 border-slate-200'
+                              ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                              : 'bg-slate-100 text-slate-500 border-slate-200'
                               }`}
                           >
                             {auth.is_active ? 'ACTIVE' : 'REVOKED'}

@@ -77,8 +77,8 @@ export const HistoryPage: React.FC = () => {
   const activeStudent = isParent
     ? (store.getActiveChild() || authorizedStudents.find((s) => s.id === selectedChildId) || authorizedStudents[0])
     : isStudent
-    ? (authorizedStudents.find((s) => s.id === selectedChildId) || authorizedStudents[0])
-    : null;
+      ? (authorizedStudents.find((s) => s.id === selectedChildId) || authorizedStudents[0])
+      : null;
 
   const childMetrics = activeStudent
     ? store.getChildAttendanceMetrics(activeStudent.id)
@@ -746,10 +746,10 @@ export const HistoryPage: React.FC = () => {
       {feedbackToast && (
         <div
           className={`fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-md z-50 p-3 sm:p-4 rounded-xl text-white text-xs font-bold shadow-2xl flex items-center space-x-2 animate-in slide-in-from-bottom-5 border ${feedbackToast.isError
-              ? 'bg-rose-600 border-rose-500'
-              : feedbackToast.isWarning
-                ? 'bg-amber-600 border-amber-500'
-                : 'bg-emerald-600 border-emerald-500'
+            ? 'bg-rose-600 border-rose-500'
+            : feedbackToast.isWarning
+              ? 'bg-amber-600 border-amber-500'
+              : 'bg-emerald-600 border-emerald-500'
             }`}
         >
           {feedbackToast.isError ? (

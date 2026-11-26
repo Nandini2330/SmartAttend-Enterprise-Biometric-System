@@ -225,15 +225,15 @@ export const CalendarPage: React.FC = () => {
               <div
                 key={`day-${day}`}
                 className={`min-h-[58px] sm:h-28 p-1 sm:p-2 rounded-lg border flex flex-col justify-between transition-colors ${isToday
-                    ? 'border-indigo-400 bg-indigo-50/20 dark:bg-indigo-950/20'
-                    : 'border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/60'
+                  ? 'border-indigo-400 bg-indigo-50/20 dark:bg-indigo-950/20'
+                  : 'border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/60'
                   }`}
               >
                 <div className="flex items-center justify-between">
                   <span
                     className={`text-xs font-bold ${isToday
-                        ? 'flex h-5 w-5 items-center justify-center rounded-full bg-indigo-600 text-white text-[11px]'
-                        : 'text-slate-700 dark:text-slate-300'
+                      ? 'flex h-5 w-5 items-center justify-center rounded-full bg-indigo-600 text-white text-[11px]'
+                      : 'text-slate-700 dark:text-slate-300'
                       }`}
                   >
                     {day}
@@ -289,12 +289,12 @@ export const CalendarPage: React.FC = () => {
                   <span className="font-semibold text-slate-900 dark:text-white">{evt.title}</span>
                   <span
                     className={`px-2 py-0.5 rounded text-[10px] font-bold ${evt.event_type === 'HOLIDAY'
-                        ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'
-                        : evt.event_type === 'EXAMINATION'
-                          ? 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300'
-                          : evt.event_type === 'VACATION'
-                            ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300'
-                            : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                      ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'
+                      : evt.event_type === 'EXAMINATION'
+                        ? 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300'
+                        : evt.event_type === 'VACATION'
+                          ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300'
+                          : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
                       }`}
                   >
                     {evt.event_type}

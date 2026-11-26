@@ -60,49 +60,49 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
     icon: any;
     badgeColor: string;
   }[] = [
-    {
-      label: language === 'mr' ? 'प्राचार्य' : 'Principal',
-      email: 'principal@dpsrkpuram.edu.in',
-      role: 'school_admin',
-      icon: School,
-      badgeColor: 'border-blue-400 bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 dark:border-blue-800'
-    },
-    {
-      label: language === 'mr' ? 'शिक्षक' : 'Teacher',
-      email: 'priya.sharma@dpsrkpuram.edu.in',
-      role: 'teacher',
-      icon: GraduationCap,
-      badgeColor: 'border-teal-400 bg-teal-50 text-teal-700 dark:bg-teal-950/60 dark:text-teal-300 dark:border-teal-800'
-    },
-    {
-      label: language === 'mr' ? 'पालक (विक्रम)' : 'Parent (Vikram)',
-      email: 'vikram.mehta@gmail.com',
-      role: 'parent',
-      icon: Users,
-      badgeColor: 'border-amber-400 bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800'
-    },
-    {
-      label: language === 'mr' ? 'पालक (अनिल)' : 'Parent (Anil)',
-      email: 'anil.verma@gmail.com',
-      role: 'parent',
-      icon: Users,
-      badgeColor: 'border-amber-400 bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800'
-    },
-    {
-      label: language === 'mr' ? 'विद्यार्थी' : 'Student',
-      email: 'aarav.mehta@student.dpsrkpuram.edu.in',
-      role: 'student',
-      icon: User,
-      badgeColor: 'border-cyan-400 bg-cyan-50 text-cyan-700 dark:bg-cyan-950/60 dark:text-cyan-300 dark:border-cyan-800'
-    },
-    {
-      label: language === 'mr' ? 'सुपर ॲडमिन' : 'Super Admin',
-      email: 'superadmin@smartattend.edu',
-      role: 'super_admin',
-      icon: Shield,
-      badgeColor: 'border-purple-400 bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 dark:border-purple-800'
-    }
-  ];
+      {
+        label: language === 'mr' ? 'प्राचार्य' : 'Principal',
+        email: 'principal@dpsrkpuram.edu.in',
+        role: 'school_admin',
+        icon: School,
+        badgeColor: 'border-blue-400 bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 dark:border-blue-800'
+      },
+      {
+        label: language === 'mr' ? 'शिक्षक' : 'Teacher',
+        email: 'priya.sharma@dpsrkpuram.edu.in',
+        role: 'teacher',
+        icon: GraduationCap,
+        badgeColor: 'border-teal-400 bg-teal-50 text-teal-700 dark:bg-teal-950/60 dark:text-teal-300 dark:border-teal-800'
+      },
+      {
+        label: language === 'mr' ? 'पालक (विक्रम)' : 'Parent (Vikram)',
+        email: 'vikram.mehta@gmail.com',
+        role: 'parent',
+        icon: Users,
+        badgeColor: 'border-amber-400 bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800'
+      },
+      {
+        label: language === 'mr' ? 'पालक (अनिल)' : 'Parent (Anil)',
+        email: 'anil.verma@gmail.com',
+        role: 'parent',
+        icon: Users,
+        badgeColor: 'border-amber-400 bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-800'
+      },
+      {
+        label: language === 'mr' ? 'विद्यार्थी' : 'Student',
+        email: 'aarav.mehta@student.dpsrkpuram.edu.in',
+        role: 'student',
+        icon: User,
+        badgeColor: 'border-cyan-400 bg-cyan-50 text-cyan-700 dark:bg-cyan-950/60 dark:text-cyan-300 dark:border-cyan-800'
+      },
+      {
+        label: language === 'mr' ? 'सुपर ॲडमिन' : 'Super Admin',
+        email: 'superadmin@smartattend.edu',
+        role: 'super_admin',
+        icon: Shield,
+        badgeColor: 'border-purple-400 bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 dark:border-purple-800'
+      }
+    ];
 
   const handleQuickFill = (targetEmail: string) => {
     setEmail(targetEmail);
@@ -149,22 +149,20 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           <button
             type="button"
             onClick={() => setLanguage('en')}
-            className={`px-2 sm:px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
-              language === 'en'
+            className={`px-2 sm:px-2.5 py-1 rounded-full text-xs font-bold transition-all ${language === 'en'
                 ? 'bg-brand-600 text-white shadow-sm'
                 : 'text-slate-600 dark:text-[#CBD5E1] hover:text-slate-900 dark:hover:text-white'
-            }`}
+              }`}
           >
             English
           </button>
           <button
             type="button"
             onClick={() => setLanguage('mr')}
-            className={`px-2 sm:px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
-              language === 'mr'
+            className={`px-2 sm:px-2.5 py-1 rounded-full text-xs font-bold transition-all ${language === 'mr'
                 ? 'bg-brand-600 text-white shadow-sm'
                 : 'text-slate-600 dark:text-[#CBD5E1] hover:text-slate-900 dark:hover:text-white'
-            }`}
+              }`}
           >
             मराठी
           </button>
@@ -325,11 +323,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             <button
               type="submit"
               disabled={isSubmitting || lockoutSeconds > 0}
-              className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 shadow-lg cursor-pointer ${
-                lockoutSeconds > 0
+              className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-2 shadow-lg cursor-pointer ${lockoutSeconds > 0
                   ? 'bg-slate-400 cursor-not-allowed text-white shadow-none'
                   : 'bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white shadow-brand-500/25 active:scale-[0.99]'
-              }`}
+                }`}
             >
               {isSubmitting ? (
                 <span>{language === 'mr' ? 'प्रमाणित करत आहे...' : 'Authenticating...'}</span>
@@ -361,11 +358,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                     key={p.email}
                     type="button"
                     onClick={() => handleQuickFill(p.email)}
-                    className={`px-2 py-1.5 rounded-lg border text-[11px] font-semibold flex items-center space-x-1.5 transition-all text-left cursor-pointer ${
-                      isCurrent
+                    className={`px-2 py-1.5 rounded-lg border text-[11px] font-semibold flex items-center space-x-1.5 transition-all text-left cursor-pointer ${isCurrent
                         ? 'border-brand-500 bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 ring-1 ring-brand-500/30'
                         : p.badgeColor + ' hover:opacity-90'
-                    }`}
+                      }`}
                   >
                     <IconComponent className="w-3 h-3 shrink-0" />
                     <span className="truncate">{p.label}</span>

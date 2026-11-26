@@ -236,11 +236,10 @@ export const TimetablePage: React.FC = () => {
 
       {feedback && (
         <div
-          className={`p-4 rounded-xl text-xs font-semibold flex items-center gap-2 border ${
-            feedback.type === 'success'
+          className={`p-4 rounded-xl text-xs font-semibold flex items-center gap-2 border ${feedback.type === 'success'
               ? 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300'
               : 'bg-rose-50 text-rose-800 border-rose-200 dark:bg-rose-950/40 dark:text-rose-300'
-          }`}
+            }`}
         >
           {feedback.type === 'success' ? (
             <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
@@ -612,11 +611,10 @@ export const TimetablePage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={!!conflictWarning}
-                  className={`px-4 py-1.5 rounded-lg font-semibold text-white shadow-sm transition-all ${
-                    conflictWarning
+                  className={`px-4 py-1.5 rounded-lg font-semibold text-white shadow-sm transition-all ${conflictWarning
                       ? 'bg-slate-400 cursor-not-allowed'
                       : 'bg-brand-600 hover:bg-brand-700'
-                  }`}
+                    }`}
                 >
                   {editingSlot ? 'Update Period Slot' : 'Confirm & Schedule'}
                 </button>
